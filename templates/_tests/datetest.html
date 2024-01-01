@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block main %}
+
+
+<input id="whatButton">
+<button id="button1" onclick="inputEdit(this.id, 'whatButton')">1</button>
+<button id="button2" onclick="inputEdit(this.id, 'whatButton')">2</button>
+<button id="button3" onclick="inputEdit(this.id, 'whatButton')">3</button>
+<script>
+ function inputEdit(id, input_id) {
+  document.getElementById(input_id).value = id;
+}
+</script>
+
+{% endblock %}
