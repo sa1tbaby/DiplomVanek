@@ -6,12 +6,15 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="author" content="Simakov Ivan">
-    <title>Album example · Bootstrap v5.3</title>
+    <meta name="Po!nt" content="Simakov Ivan">
+    <title>Behalf Beauty Salon</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
     <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+    {% block head %}
+    {% endblock head %}
+
 
     <style>
       {% block style %}
@@ -117,6 +120,7 @@
     </svg>
 
     <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
+
       <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center"
               id="bd-theme"
               type="button"
@@ -126,6 +130,7 @@
         <svg class="bi my-1 theme-icon-active" width="1em" height="1em"><use href="#circle-half"></use></svg>
         <span class="visually-hidden" id="bd-theme-text">Toggle theme</span>
       </button>
+
       <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="bd-theme-text">
         <li>
           <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
@@ -149,24 +154,29 @@
           </button>
         </li>
       </ul>
+
     </div>
 
     <header class="sticky-top" data-bs-theme="dark">
+
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+
         <div class="container ">
+
           <a class="navbar-brand col-lg-3 me-0" href="{{ url_for('start') }}">BEHALF</a>
+
           <ul class="navbar-nav col-lg-6 justify-content-lg-center">
                 <li class="nav-item dropdown">
                   <a class="btn dropdown-toggle nav-link nav-panel" data-bs-toggle="dropdown" aria-expanded="false">
                     Услуги
                   </a>
                   <ul class="dropdown-menu dropdown-menu-dark">
-                      <li><a class="dropdown-item" href="{{ url_for('services') }}">Брови</a></li>
-                      <li><a class="dropdown-item" href="{{ url_for('services') }}">Ногти</a></li>
-                      <li><a class="dropdown-item" href="{{ url_for('services') }}">Окрашивание</a></li>
-                      <li><a class="dropdown-item" href="{{ url_for('services') }}">Шугаринг</a></li>
-                      <li><a class="dropdown-item" href="{{ url_for('services') }}">Стрижка</a></li>
-                      <li><a class="dropdown-item" href="{{ url_for('services') }}">Солярий</a></li>
+                      <li><a class="dropdown-item" href="{{ url_for('services', service_name='eyebrows') }}">Брови</a></li>
+                      <li><a class="dropdown-item" href="{{ url_for('services', service_name='nails') }}">Ногти</a></li>
+                      <li><a class="dropdown-item" href="{{ url_for('services', service_name='coloring') }}">Окрашивание</a></li>
+                      <li><a class="dropdown-item" href="{{ url_for('services', service_name='sugaring') }}">Шугаринг</a></li>
+                      <li><a class="dropdown-item" href="{{ url_for('services', service_name='haircut') }}">Стрижка</a></li>
+                      <li><a class="dropdown-item" href="{{ url_for('services', service_name='solarium') }}">Солярий</a></li>
                   </ul>
                 </li>
                 <li class="nav-item dropdown">
@@ -174,56 +184,67 @@
                     Мастера
                   </a>
                   <ul class="dropdown-menu dropdown-menu-dark">
-                      <li><a class="dropdown-item" href="{{ url_for('masters') }}">Брови</a></li>
-                      <li><a class="dropdown-item" href="{{ url_for('masters') }}">Ногти</a></li>
-                      <li><a class="dropdown-item" href="{{ url_for('masters') }}">Окрашивание</a></li>
-                      <li><a class="dropdown-item" href="{{ url_for('masters') }}">Шугаринг</a></li>
-                      <li><a class="dropdown-item" href="{{ url_for('masters') }}">Стрижка</a></li>
+                      <li><a class="dropdown-item" href="{{ url_for('masters', masters_name='eyebrows') }}">Брови</a></li>
+                      <li><a class="dropdown-item" href="{{ url_for('masters', masters_name='nails') }}">Ногти</a></li>
+                      <li><a class="dropdown-item" href="{{ url_for('masters', masters_name='coloring') }}">Окрашивание</a></li>
+                      <li><a class="dropdown-item" href="{{ url_for('masters', masters_name='sugaring') }}">Шугаринг</a></li>
+                      <li><a class="dropdown-item" href="{{ url_for('masters', masters_name='haircut') }}">Стрижка</a></li>
                   </ul>
                 </li>
                 <li class="nav-item">
                   <a class="btn nav-link nav-panel" href="{{ url_for('appointment') }}">Записаться</a>
                 </li>
           </ul>
+
           <div class="d-lg-flex col-lg-3 justify-content-lg-end">
             <a class="btn btn-primary" href="{{ url_for('auth') }}">Войти</a>
           </div>
+
         </div>
       </nav>
     </header>
-
     <main>
+    {% block main %}
 
-      {% block main %}
 
-      {% endblock main %}
 
+    {% endblock main %}
     </main>
+
 
       <footer class="align-items-center py-3 my-4 border-top">
         <div class="d-flex flex-wrap container justify-content-between">
+
           <div class="col-md-4 d-flex align-items-center">
+
             <a href="/" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
               <svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>
             </a>
+
             <span class="mb-3 mb-md-0 text-body-secondary">© 2023 Po!nt, Inc</span>
           </div>
+
           <ul class="nav col-md-4 justify-content-end d-flex">
+
             <li class="ms-3">
               <a class="fa fa-telegram" href="#" style="font-size:30px; color: black;"></a>
             </li>
+
             <li class="ms-3">
                 <a class="fa fa-vk" href="https://vk.com/artstudio_behalf" style="font-size:30px; color: black;"></a>
             </li>
+
             <li class="ms-3">
                <a class="fa fa-instagram " href="#" style="font-size:30px; color: black;"></a>
             </li>
+
             <li class="ms-3">
                <a href="/" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
               <svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>
             </a>
             </li>
           </ul>
+
         </div>
       </footer>
 
