@@ -20,7 +20,7 @@ www = "2024-01-10 16:30:00"
 print(type(datetime.datetime.fromisoformat(www)))
 print(type(ww))
 
-with open('ser.txt', 'r', encoding='UTF-8') as file:
+with open('../_doc/Ser.txt', 'r', encoding='UTF-8') as file:
     data = file.read().split('\n')
 print(data)
 
@@ -60,7 +60,7 @@ for i in data:
     listing.append(tmp_dict)
 
 
-with open('static/data/services.json', 'r') as file:
+with open('../static/data/services.json', 'r') as file:
     asd = json.loads(file.read())
 
 asd = asd.get('data')
