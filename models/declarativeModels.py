@@ -24,6 +24,15 @@ intpk = Annotated[int, mapped_column(primary_key=True)]
 
 class BaseBd(DeclarativeBase):
     pass
+
+class Users(BaseBd):
+    __tablename__ = "users"
+    id: Mapped[int] = mapped_column(primary_key=True)
+    name: Mapped[str]
+    email: Mapped[str]
+    phone_number: Mapped[str] = mapped_column(String(20))
+    role: Mapped[str]
+
 class Users(BaseBd):
     __tablename__ = "users"
     id: Mapped[int] = mapped_column(primary_key=True)
