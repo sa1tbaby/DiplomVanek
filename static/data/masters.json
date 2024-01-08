@@ -1,0 +1,52 @@
+{
+  "data": [
+    {
+      "id": 111,
+      "name": "Татьяна",
+      "email": "tati_master@gmail.ru",
+      "phone_number": "+79992223342",
+      "work_schedule": "110110110110110110110110110110",
+      "content_id": ""
+    },
+    {
+      "id": 222,
+      "name": "Марина ",
+      "email": "mari_master@gmail.ru",
+      "phone_number": "+79992223343",
+      "work_schedule": "110110110110110110110110110110",
+      "content_id": ""
+    },
+    {
+      "id": 333,
+      "name": "Анна ",
+      "email": "anna_master@gmail.ru",
+      "phone_number": "+79992223344",
+      "work_schedule": "011011011011011011011011011011",
+      "content_id": ""
+    },
+    {
+      "id": 444,
+      "name": "Светлана ",
+      "email": "sveta_master@gmail.ru",
+      "phone_number": "+79992223345",
+      "work_schedule": "011011011011011011011011011011",
+      "content_id": ""
+    },
+    {
+      "id": 555,
+      "name": "Дмитрий ",
+      "email": "dima_master@gmail.ru",
+      "phone_number": "+79992223346",
+      "work_schedule": "101101101101101101101101101101",
+      "content_id": ""
+    },
+    {
+      "id": 666,
+      "name": "Алена ",
+      "email": "anna_master@gmail.ru",
+      "phone_number": "+79992223347",
+      "work_schedule": "101101101101101101101101101101",
+      "content_id": ""
+    }
+  ]
+}

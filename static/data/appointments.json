@@ -1,0 +1,84 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "user_id": 1,
+      "master_id": 4,
+      "service_name":"",
+      "date_time":"2024-01-10 10:00:00",
+      "extra" : ""
+    },
+    {
+      "id": 2,
+      "user_id": 2,
+      "master_id": 4,
+      "service_name":"",
+      "date_time":"2024-01-10 11:00:00",
+      "extra" : ""
+    },
+    {
+      "id": 3,
+      "user_id": 3,
+      "master_id": 1,
+      "service_name":"",
+      "date_time":"2024-01-10 10:00:00",
+      "extra" : ""
+    },
+    {
+      "id": 4,
+      "user_id": 4,
+      "master_id": 5,
+      "service_name":"",
+      "date_time":"2024-01-10 10:00:00",
+      "extra" : ""
+    },
+    {
+      "id": 5,
+      "user_id": 5,
+      "master_id": null,
+      "service_name":"",
+      "date_time":"2024-01-10 10:00:00",
+      "extra" : ""
+    },
+    {
+      "id": 6,
+      "user_id": 6,
+      "master_id": 6,
+      "service_name":"",
+      "date_time":"2024-01-10 10:00:00",
+      "extra" : ""
+    },
+    {
+      "id": 7,
+      "user_id": 7,
+      "master_id": 2,
+      "service_name":"",
+      "date_time":"2024-01-10 10:00:00",
+      "extra": ""
+    },
+    {
+      "id": 8,
+      "user_id": 8,
+      "master_id": 5,
+      "service_name":"",
+      "date_time":"2024-01-10 11:00:00",
+      "extra": ""
+    },
+    {
+      "id": 9,
+      "user_id": 9,
+      "master_id": 4,
+      "service_name":"",
+      "date_time":"2024-01-10 12:00:00",
+      "extra": ""
+    },
+    {
+      "id": 10,
+      "user_id": 10,
+      "master_id": 1,
+      "service_name":"",
+      "date_time":"2024-01-10 11:00:00",
+      "extra": ""
+    }
+  ]
+}

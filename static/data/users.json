@@ -1,0 +1,81 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "name": "Иванова Анна Михайловна",
+      "email": "anna_example@gmail.ru",
+      "phone_number": "+79261234567",
+      "role": "guest"
+    },
+    {
+      "id": 2,
+      "name": "Петров Сергей Викторович",
+      "email": "petr_example@gmail.ru",
+      "phone_number": "+79181234567",
+      "role": "guest"
+    },
+    {
+      "id": 3,
+      "name": "Смирнова Екатерина Александровна",
+      "email": "kate_example@gmail.ru",
+      "phone_number": "+79031234567",
+      "role": "guest"
+    },
+    {
+      "id": 4,
+      "name": "Кузнецов Дмитрий Иванович",
+      "email": "dima_example@gmail.ru",
+      "phone_number": "+79341234567",
+      "role": "guest"
+    },
+    {
+      "id": 5,
+      "name": "Васильева Ольга Петровна",
+      "email": "olga_example@gmail.ru",
+      "phone_number": "+79551234567",
+      "role": "guest"
+    },
+    {
+      "id": 6,
+      "name": "Попов Александр Михайлович",
+      "email": "aleks_example@gmail.ru",
+      "phone_number": "+79661234567",
+      "role": "guest"
+    },
+    {
+      "id": 7,
+      "name": "Соколова Елена Сергеевна",
+      "email": "helena_example@gmail.ru",
+      "phone_number": "+79771234567",
+      "role": "guest"
+    },
+    {
+      "id": 8,
+      "name": "Михайлов Игорь Валерьевич",
+      "email": "igor_example@gmail.ru",
+      "phone_number": "+79881234567",
+      "role": "guest"
+    },
+    {
+      "id": 9,
+      "name": "Новикова Татьяна Владимировна",
+      "email": "tati2_example@gmail.ru",
+      "phone_number": "+79991234567",
+      "role": "guest"
+    },
+    {
+      "id": 10,
+      "name": "Федоров Андрей Алексеевич",
+      "email": "andrey_example@gmail.ru",
+      "phone_number": "+79901234567",
+      "role": "guest"
+    },
+    {
+      "id": 11,
+      "name": "Иванов Иван",
+      "email": "admin@gmail.ru",
+      "phone_number": "+79992223341",
+      "role": "admin"
+    }
+  ]
+}
