@@ -1,0 +1,11 @@
+{
+  "dialect": "postgresql",
+  "driver": "psycopg2",
+  "username": "admin",
+  "password": "admin",
+  "host": "172.18.25.244",
+  "port": "5432",
+  "database": "",
+  "engine_echo": true,
+  "engine_pool_size": 5
+}
