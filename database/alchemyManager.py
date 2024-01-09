@@ -1,7 +1,7 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.engine.base import Engine
-from models.declarativeModels import ConfigDB
+from app.schemas import ConfigDB
 
 from json import load
 import os.path

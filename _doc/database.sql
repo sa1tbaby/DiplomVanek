@@ -8,16 +8,17 @@ CREATE TABLE "users" (
 
 CREATE TABLE "masters" (
   "id" integer PRIMARY KEY,
+  "name" varchar,
   "email" varchar,
   "phone_number" varchar(12),
   "work_schedule" bit(31),
-  "content_id" integer,
-  "name" varchar
+  "content_id" integer
+
 );
 
 CREATE TABLE "services" (
+  "name" varchar(50) PRIMARY KEY,
   "type" varchar(20),
-  "name" varchar(30) PRIMARY KEY,
   "cost" integer,
   "content_id" integer
 );
