@@ -1,9 +1,14 @@
 import datetime
+import os.path
+import json
 import time
 masters_spec = tuple(['Брови','Ногти','Окрашивание','Шугаринг','Стрижка'])
+ddir = os.path.join(os.path.abspath(os.path.pardir), 'static/data')
+file_name = os.path.join(ddir, 'services.json')
+file_name_2 = os.path.join(ddir, 'masters.json')
+file_name_3 = os.path.join(ddir, 'masters_service.json')
 
-import json
-
+"""
 smena = 3
 graphic = str()
 for i in range(2, 32):
@@ -68,13 +73,55 @@ asd = asd.get('data')
 for j, i in enumerate(asd):
     print(j, i.get('type'))
 
-"""
-
-with open('static/data/services.json', 'w') as file:
-    tmp = {
-        'data': listing
-    }
-    json.dump(tmp, file)
-
 
 """
+
+with open(file_name, 'r', encoding='UTF-8') as file:
+    services = json.load(file)
+
+masters = {
+    'data': [
+        {
+            "id": "111",
+            "type": "Стрижки"
+        },
+        {
+            "id": "222",
+            "type": "Стрижки"
+        },
+        {
+            "id": "333",
+            "type": "Стрижки"
+        },
+        {
+            "id": "111",
+            "type": "Окрашивание"
+        },
+        {
+            "id": "222",
+            "type": "Окрашивание"
+        },
+        {
+            "id": "444",
+            "type": "Ногтевой сервис"
+        },
+        {
+            "id": "555",
+            "type": "Ногтевой сервис"
+        },
+        {
+            "id": "666",
+            "type": "Шугаринг"
+        },
+        {
+            "id": "777",
+            "type": "Ресницы и брови"
+        },
+        {
+            "id": "888",
+            "type": "Ресницы и брови"
+        }
+    ]
+}
+
+

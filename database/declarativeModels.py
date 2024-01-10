@@ -30,7 +30,7 @@ class Masters(BaseBd):
     name: Mapped[str]
     email: Mapped[str]
     phone_number: Mapped[str] = mapped_column(String(20))
-    work_schedule: Mapped[bytearray]
+    work_schedule: Mapped[str]
 
     appointment: Mapped[List['Appointments']] = relationship()
     master_service: Mapped[List['MastersService']] = relationship()
@@ -76,7 +76,7 @@ class Content(BaseBd):
     extra: Mapped[str] = mapped_column(nullable=True)
 
 class MastersService(BaseBd):
-    __tablename__ = "content"
+    __tablename__ = "masters_service"
     master_id: Mapped[int] = mapped_column(
         ForeignKey("masters.id"),
         primary_key=True

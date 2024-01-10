@@ -60,5 +60,5 @@ class AlchemyManager(CreateEngine):
             config_path=config_path,
             config_name=config_name
         )
-
-        self.session = sessionmaker(self.getEngine())
+        self.engine = self.getEngine()
+        self.session = sessionmaker(bind=self.engine)

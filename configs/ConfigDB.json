@@ -3,9 +3,9 @@
   "driver": "psycopg2",
   "username": "admin",
   "password": "admin",
-  "host": "172.18.25.244",
+  "host": "192.168.1.135",
   "port": "5432",
-  "database": "",
+  "database": "appdb",
   "engine_echo": true,
   "engine_pool_size": 5
 }
