@@ -5,14 +5,15 @@
       "name": "Татьяна",
       "email": "tati_master@gmail.ru",
       "phone_number": "+79992223342",
-      "work_schedule": "110110110110110110110110110110"
+      "work_schedule": "110110110110110110110110110110",
+      "type": "Стрижки"
     },
     {
       "id": 222,
       "name": "Марина ",
       "email": "mari_master@gmail.ru",
       "phone_number": "+79992223343",
-      "work_schedule": "110110110110110110110110110110"
+      "work_schedule": "110110110110110110110110110110",
     },
     {
       "id": 333,

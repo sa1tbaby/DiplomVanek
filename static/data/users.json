@@ -3,6 +3,7 @@
     {
       "id": 1,
       "name": "Иванова Анна Михайловна",
+      "password": "master",
       "email": "anna_example@gmail.ru",
       "phone_number": "+79261234567",
       "role": "guest"
@@ -10,6 +11,7 @@
     {
       "id": 2,
       "name": "Петров Сергей Викторович",
+      "password": "master",
       "email": "petr_example@gmail.ru",
       "phone_number": "+79181234567",
       "role": "guest"
@@ -17,6 +19,7 @@
     {
       "id": 3,
       "name": "Смирнова Екатерина Александровна",
+      "password": "master",
       "email": "kate_example@gmail.ru",
       "phone_number": "+79031234567",
       "role": "guest"
@@ -24,6 +27,7 @@
     {
       "id": 4,
       "name": "Кузнецов Дмитрий Иванович",
+      "password": "master",
       "email": "dima_example@gmail.ru",
       "phone_number": "+79341234567",
       "role": "guest"
@@ -31,6 +35,7 @@
     {
       "id": 5,
       "name": "Васильева Ольга Петровна",
+      "password": "master",
       "email": "olga_example@gmail.ru",
       "phone_number": "+79551234567",
       "role": "guest"
@@ -38,6 +43,7 @@
     {
       "id": 6,
       "name": "Попов Александр Михайлович",
+      "password": "master",
       "email": "aleks_example@gmail.ru",
       "phone_number": "+79661234567",
       "role": "guest"
@@ -45,6 +51,7 @@
     {
       "id": 7,
       "name": "Соколова Елена Сергеевна",
+      "password": "master",
       "email": "helena_example@gmail.ru",
       "phone_number": "+79771234567",
       "role": "guest"
@@ -52,6 +59,7 @@
     {
       "id": 8,
       "name": "Михайлов Игорь Валерьевич",
+      "password": "master",
       "email": "igor_example@gmail.ru",
       "phone_number": "+79881234567",
       "role": "guest"
@@ -59,6 +67,7 @@
     {
       "id": 9,
       "name": "Новикова Татьяна Владимировна",
+      "password": "master",
       "email": "tati2_example@gmail.ru",
       "phone_number": "+79991234567",
       "role": "guest"
@@ -66,6 +75,7 @@
     {
       "id": 10,
       "name": "Федоров Андрей Алексеевич",
+      "password": "master",
       "email": "andrey_example@gmail.ru",
       "phone_number": "+79901234567",
       "role": "guest"
@@ -73,6 +83,7 @@
     {
       "id": 11,
       "name": "Иванов Иван",
+      "password": "master",
       "email": "admin@gmail.ru",
       "phone_number": "+79992223341",
       "role": "admin"

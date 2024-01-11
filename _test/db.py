@@ -10,5 +10,5 @@ Manager = AlchemyManager(
     config_path=config_dir
 )
 
-#BaseBd.metadata.drop_all(Manager.engine)
-#BaseBd.metadata.create_all(Manager.engine)
+BaseBd.metadata.drop_all(Manager.engine)
+BaseBd.metadata.create_all(Manager.engine)

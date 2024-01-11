@@ -12,37 +12,37 @@ def main():
     menu_list = [
         {
             'number': 1,
-            'src': 'img/menu/menu_coloring.jpg',
+            'src': 'img/services/coloring.jpg',
             'title': 'Услуги колориста'
         },
         {
             'number': 2,
-            'src': 'img/menu/menu_haircut.jpg',
+            'src': 'img/services/haircut.jpg',
             'title': 'Услуги парикмахера'
         },
         {
             'number': 3,
-            'src': 'img/menu/menu_lash_brow.jpg',
+            'src': 'img/services/lash_brow.jpg',
             'title': 'Услуги бровиста'
         },
         {
             'number': 4,
-            'src': 'img/menu/menu_nails.jpg',
+            'src': 'img/services/nails.jpg',
             'title': 'Услуги ногтевого сервиса'
         },
         {
             'number': 5,
-            'src': 'img/menu/menu_nails_2.jpg',
+            'src': 'img/services/nails_2.jpg',
             'title': 'Услуги ногтевого сервиса'
         },
         {
             'number': 6,
-            'src': 'img/menu/menu_solarium.jpg',
+            'src': 'img/services/solarium.jpg',
             'title': 'Услуги солярия'
         },
         {
             'number': 7,
-            'src': 'img/menu/menu_sufaring.jpg',
+            'src': 'img/services/sugaring.jpg',
             'title': 'Услуги шугаринга'
         },
     ]

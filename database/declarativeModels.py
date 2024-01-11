@@ -17,9 +17,11 @@ class Users(BaseBd):
     __tablename__ = "users"
     id: Mapped[int] = mapped_column(primary_key=True)
     name: Mapped[str]
+    password: Mapped[str]
     email: Mapped[str]
     phone_number: Mapped[str] = mapped_column(String(20))
     role: Mapped[str]
+
 
     appointment: Mapped[List['Appointments']] = relationship()
 
@@ -33,18 +35,16 @@ class Masters(BaseBd):
     work_schedule: Mapped[str]
 
     appointment: Mapped[List['Appointments']] = relationship()
-    master_service: Mapped[List['MastersService']] = relationship()
     content: Mapped[List['Content']] = relationship()
 
 
 class Services(BaseBd):
     __tablename__ = "services"
+    type: Mapped[str] = mapped_column(String(50))
     name: Mapped[str] = mapped_column(String(50), primary_key=True)
-    type: Mapped[str] = mapped_column(String(20))
     cost: Mapped[int]
 
     appointment: Mapped[List['Appointments']] = relationship()
-    master_service: Mapped[List['MastersService']] = relationship()
     content: Mapped[List['Content']] = relationship()
 
 
@@ -52,9 +52,9 @@ class Appointments(BaseBd):
     __tablename__ = "appointments"
     id: Mapped[int] = mapped_column(primary_key=True)
     user_id: Mapped[int] = mapped_column(ForeignKey("users.id"))
-    master_id: Mapped[int] = mapped_column(ForeignKey("masters.id"))
+    master_id: Mapped[int] = mapped_column(ForeignKey("masters.id"), nullable=True)
     service_name: Mapped[str] = mapped_column(
-        String(20),
+        String(50),
         ForeignKey("services.name")
     )
     date_time: Mapped[datetime]
@@ -75,14 +75,14 @@ class Content(BaseBd):
     type: Mapped[str]
     extra: Mapped[str] = mapped_column(nullable=True)
 
+
+"""
 class MastersService(BaseBd):
     __tablename__ = "masters_service"
     master_id: Mapped[int] = mapped_column(
-        ForeignKey("masters.id"),
-        primary_key=True
+        ForeignKey("masters.id")
     )
-    service_name: Mapped[str] = mapped_column(
-        String(20),
-        ForeignKey("services.name"),
-        primary_key=True
+    service_type: Mapped[str] = mapped_column(
+        String(50)
     )
+"""

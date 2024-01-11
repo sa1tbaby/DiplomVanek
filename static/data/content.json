@@ -1,0 +1,221 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "master_id": 111,
+      "service_name": null,
+      "page": "masters",
+      "type": "img",
+      "extra": "img/masters/Tatyana.jpg"
+    },
+    {
+      "id": 2,
+      "master_id": 111,
+      "service_name": null,
+      "page": "masters",
+      "type": "text",
+      "extra": "парикмахер"
+    },
+    {
+      "id": 3,
+      "master_id": 222,
+      "service_name": null,
+      "page": "masters",
+      "type": "img",
+      "extra": "img/masters/svetlana.jpg"
+    },
+    {
+      "id": 4,
+      "master_id": 222,
+      "service_name": null,
+      "page": "masters",
+      "type": "text",
+      "extra": "топ мастер-парикмахер"
+    },
+    {
+      "id": 5,
+      "master_id": 333,
+      "service_name": null,
+      "page": "masters",
+      "type": "img",
+      "extra": "img/masters/Dima.jpg"
+    },
+    {
+      "id": 6,
+      "master_id": 333,
+      "service_name": null,
+      "page": "masters",
+      "type": "text",
+      "extra": "барбер"
+    },
+    {
+      "id": 7,
+      "master_id": 444,
+      "service_name": null,
+      "page": "masters",
+      "type": "img",
+      "extra": "img/masters/Marina.jpg"
+    },
+    {
+      "id": 8,
+      "master_id": 444,
+      "service_name": null,
+      "page": "masters",
+      "type": "text",
+      "extra": "мастер ногтевого сервиса"
+    },
+    {
+      "id": 9,
+      "master_id": 555,
+      "service_name": null,
+      "page": "masters",
+      "type": "img",
+      "extra": "img/masters/Anna.jpg"
+    },
+    {
+      "id": 10,
+      "master_id": 555,
+      "service_name": null,
+      "page": "masters",
+      "type": "text",
+      "extra": "мастер ногтевого сервиса"
+    },
+    {
+      "id": 11,
+      "master_id": 666,
+      "service_name": null,
+      "page": "masters",
+      "type": "img",
+      "extra": "img/masters/alena.jpg"
+    },
+    {
+      "id": 12,
+      "master_id": 666,
+      "service_name": null,
+      "page": "masters",
+      "type": "text",
+      "extra": "Шугаринг"
+    },
+    {
+      "id": 13,
+      "master_id": 777,
+      "service_name": null,
+      "page": "masters",
+      "type": "img",
+      "extra": "img/masters/Efros.jpg"
+    },
+    {
+      "id": 14,
+      "master_id": 777,
+      "service_name": null,
+      "page": "masters",
+      "type": "text",
+      "extra": "Бровист"
+    },
+    {
+      "id": 15,
+      "master_id": 888,
+      "service_name": null,
+      "page": "masters",
+      "type": "img",
+      "extra": "img/masters/Lubava.jpg"
+    },
+    {
+      "id": 16,
+      "master_id": 888,
+      "service_name": null,
+      "page": "masters",
+      "type": "text",
+      "extra": "Бровист"
+    },
+    {
+      "id": 17,
+      "master_id": null,
+      "service_name": null,
+      "page": "masters",
+      "type": "text",
+      "extra": "Бровист"
+    },
+    {
+      "id": 18,
+      "master_id": null,
+      "service_name": null,
+      "page": "main",
+      "type": "img",
+      "extra": "img/main/haircut_2.gif"
+    },
+    {
+      "id": 19,
+      "master_id": null,
+      "service_name": null,
+      "page": "main",
+      "type": "img",
+      "extra": "img/main/haircut_3.gif"
+    },
+    {
+      "id": 20,
+      "master_id": null,
+      "service_name": null,
+      "page": "main",
+      "type": "img",
+      "extra": "img/main/haircut_1.gif"
+    },
+    {
+      "id": 21,
+      "master_id": null,
+      "service_name": null,
+      "page": "services",
+      "type": "text",
+      "extra": "Титульная страница раздела Услуг"
+    },
+    {
+      "id": 22,
+      "master_id": null,
+      "service_name": "Ресницы и брови",
+      "page": "services",
+      "type": "img",
+      "extra": "img/services/lash_brow.jpg"
+    },
+    {
+      "id": 23,
+      "master_id": null,
+      "service_name": "Окрашивание",
+      "page": "services",
+      "type": "img",
+      "extra": "img/services/coloring.jpg"
+    },
+    {
+      "id": 24,
+      "master_id": null,
+      "service_name": "Ногтевой сервис",
+      "page": "services",
+      "type": "img",
+      "extra": "img/services/nails.jpg"
+    },
+    {
+      "id": 25,
+      "master_id": null,
+      "service_name": "Стрижки",
+      "page": "services",
+      "type": "img",
+      "extra": "img/services/haircut.jpg"
+    },
+    {
+      "id": 26,
+      "master_id": null,
+      "service_name": "Солярий",
+      "page": "services",
+      "type": "img",
+      "extra": "img/services/solarium.jpg"
+    },
+    {
+      "id": 27,
+      "master_id": null,
+      "service_name": "Шугаринг",
+      "page": "services",
+      "type": "img",
+      "extra": "img/services/sugaring.jpg"
+    }
+
+  ]
+}

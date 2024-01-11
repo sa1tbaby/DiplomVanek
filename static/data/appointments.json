@@ -2,19 +2,19 @@
   "data": [
     {
       "id": 1,
-      "user_id": 1,
+      "user_id": 3,
       "master_id": 222,
-      "service_name":"Стрижка модельная",
+      "service_name":"Окрашивание прикорневое",
       "date_time":"2024-01-10 10:00:00",
-      "extra" : ""
+      "extra" : null
     },
     {
       "id": 2,
-      "user_id": 1,
+      "user_id": 2,
       "master_id": 222,
       "service_name":"Сложное окрашивание",
       "date_time":"2024-01-10 11:00:00",
-      "extra" : ""
+      "extra" : null
     },
     {
       "id": 3,
@@ -22,15 +22,15 @@
       "master_id": 111,
       "service_name":"Стрижка каскад",
       "date_time":"2024-01-10 10:00:00",
-      "extra" : ""
+      "extra" : null
     },
     {
       "id": 4,
       "user_id": 2,
-      "master_id": 111,
+      "master_id": 222,
       "service_name":"Окрашивание прикорневое",
       "date_time":"2024-01-10 12:00:00",
-      "extra" : ""
+      "extra" : null
     },
     {
       "id": 5,
@@ -38,7 +38,7 @@
       "master_id": 333,
       "service_name":"Стрижка фэйд",
       "date_time":"2024-01-10 10:00:00",
-      "extra" : ""
+      "extra" : null
     },
     {
       "id": 6,
@@ -46,7 +46,7 @@
       "master_id": 444,
       "service_name":"Маникюр дизайнерский",
       "date_time":"2024-01-10 10:00:00",
-      "extra" : ""
+      "extra" : null
     },
     {
       "id": 7,
@@ -54,7 +54,7 @@
       "master_id": 444,
       "service_name":"Маникюр без покрытия",
       "date_time":"2024-01-10 11:00:00",
-      "extra" : ""
+      "extra" : null
     },
     {
       "id": 8,
@@ -62,7 +62,7 @@
       "master_id": 555,
       "service_name":"Маникюр дизайнерский",
       "date_time":"2024-01-10 11:00:00",
-      "extra" : ""
+      "extra" : null
     },
     {
       "id": 9,
@@ -70,7 +70,7 @@
       "master_id": 666,
       "service_name":"Бёдра",
       "date_time":"2024-01-10 10:00:00",
-      "extra" : ""
+      "extra" : null
     },
     {
       "id": 10,
@@ -78,7 +78,7 @@
       "master_id": 777,
       "service_name":"Наращивание ресниц",
       "date_time":"2024-01-10 10:00:00",
-      "extra": ""
+      "extra": null
     },
     {
       "id": 11,
@@ -86,23 +86,23 @@
       "master_id": 888,
       "service_name":"Ламинирование ресниц",
       "date_time":"2024-01-10 11:00:00",
-      "extra": ""
+      "extra": null
     },
     {
       "id": 12,
       "user_id": 10,
-      "master_id": "",
+      "master_id": null,
       "service_name":"Стандарт",
       "date_time":"2024-01-10 12:00:00",
-      "extra": ""
+      "extra": null
     },
     {
       "id": 13,
       "user_id": 1,
-      "master_id": "",
+      "master_id": null,
       "service_name":"Премиум",
       "date_time":"2024-01-10 13:00:00",
-      "extra": ""
+      "extra": null
     }
   ]
 }
