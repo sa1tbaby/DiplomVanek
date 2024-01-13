@@ -5,7 +5,7 @@ from models.declarativeModels import (
     Services,
     ContentType)
 
-from alchemyManager import AlchemyManager
+from app.handlers.alchemyManager import AlchemyManager
 
 
 class ContentServices:
@@ -24,13 +24,11 @@ class ContentServices:
             static_content.update(
 
                 title=session.query(Content).filter(
-                    criterion=[Content.type == ContentType.text,
-                               Content.page == f"services/{services_name}"]
+                    *[Content.type == ContentType.text,
+                      Content.page == f"services/{services_name}"]
                 ),
 
-                content_list=session.query(Services).filter(
-                    criterion=Services.type == services_name
-                )
+                content_list=session.query(Services).filter(Services.type == services_name)
             )
 
         return static_content

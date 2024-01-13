@@ -3,7 +3,7 @@ from typing import Annotated
 from uuid import uuid4
 import os.path
 
-project_dir = os.path.abspath(os.path.pardir)
+project_dir = os.path.abspath(os.path.curdir)
 config_dir = os.path.join(project_dir, 'configs')
 
 uuid4_len = len(str(uuid4()))

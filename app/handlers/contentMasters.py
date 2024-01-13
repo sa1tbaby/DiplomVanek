@@ -6,7 +6,7 @@ from models.declarativeModels import (
     Masters,
     ContentType)
 
-from alchemyManager import AlchemyManager
+from app.handlers.alchemyManager import AlchemyManager
 
 class ContentMasters:
     @staticmethod
@@ -24,7 +24,8 @@ class ContentMasters:
 
             masters_list = ContentMasters._type_filtering(masters_list)
 
-            title = session.query(Content).filter(Content.type == ContentType.text, Content.page == page)
+            title = session.query(Content).filter(*[Content.type == ContentType.text,
+                                                    Content.page == page])
 
             static_content = {
                 "header": header,
