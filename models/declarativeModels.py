@@ -8,7 +8,7 @@ from enum import Enum as enumEnum
 from datetime import datetime
 from typing import List, Annotated, Optional
 
-from app.schemas import uuid_, str_20, str_50
+from models.schemas import uuid_, str_20, str_50
 
 uuid_pk = Annotated[uuid_, mapped_column(primary_key=True)]
 
@@ -46,7 +46,7 @@ class Services(BaseBd):
     type: Mapped[str_50] = mapped_column()
     cost: Mapped[int]
 
-    masters_list: Mapped[List['MastersService']] = relationship()
+
     appointments_list: Mapped[List['Appointments']] = relationship()
     content: Mapped[List['Content']] = relationship()
 
@@ -72,8 +72,3 @@ class Content(BaseBd):
     page: Mapped[str]
     type: Mapped[ContentType]
     extra: Mapped[Optional[str]]
-
-class MastersService(BaseBd):
-    __tablename__ = "masters_service"
-    master_id: Mapped[int] = mapped_column(ForeignKey("masters.id"))
-    service_name: Mapped[str_50] = mapped_column(ForeignKey("services.name"))

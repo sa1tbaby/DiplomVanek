@@ -1,10 +1,10 @@
-from database import declarativeModels
-from database.alchemyManager import AlchemyManager
+from models import declarativeModels
+from app.alchemyManager import AlchemyManager
 from sqlalchemy.orm import sessionmaker, Session
 import os.path
 
 project_dir = os.path.abspath(os.path.pardir)
-database_dir = os.path.join(project_dir, 'database')
+database_dir = os.path.join(project_dir, 'models')
 config_dir = os.path.join(project_dir, 'configs')
 
 Manager = AlchemyManager(

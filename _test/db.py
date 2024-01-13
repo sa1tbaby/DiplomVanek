@@ -1,5 +1,5 @@
 from db_test_func import create_table, get_table_where
-from database import declarativeModels
+from models import declarativeModels
 
 test_value = get_table_where(
     declarativeModels.Masters,

@@ -1,13 +1,13 @@
 import datetime
 
 from flask import render_template, request
-from app.alchemyManager import ContentMasters
+from app.alchemyManager import ContentMasters, ContentServices
 from models.declarativeModels import Content
-from app import app, Manager
+from app import app, manager
+
 
 @app.route('/start')
 def start():
-
     gif = Manager.get_table_where(
         Content,
         [Content.page == 'main', Content.type == 'img']
@@ -32,67 +32,47 @@ def start():
     return render_template('start/index.html', static_content=static_content)
 
 
-@app.route('/base')
-def base():
-    return render_template('base.html')
-
-@app.route('/prod')
-def product():
-    return render_template('index_product.html')
-
-
-
-
 
 
 
 @app.route('/masters')
 def masters():
-
     masters_name = request.values.get('masters_name')
 
-    static_content = ContentMasters.get(masters_name, Manager)
+    static_content = ContentMasters.get(
+        manager=manager,
+        masters_name=masters_name
+    )
 
     return render_template('masters/index.html',
                            static_content=static_content)
 
+
 @app.route('/services')
 def services():
-
     service_name = request.values.get('service_name')
 
-    header = declarativeModels.services_name_dict.get(service_name)
-
-    static_content = {
-        "header": header,
-        "title": Manager.get_table_where(
-            declarativeModels.Content,
-            [declarativeModels.Content.type == 'text',
-             declarativeModels.Content.page == f'services/{service_name}']
-        ),
-        "content_list": Manager.get_table_where(
-            declarativeModels.Services,
-            [declarativeModels.Services.type == service_name]
-        )
-    }
+    static_content = ContentServices.get(
+        manager=manager,
+        services_name=service_name
+    )
 
     return render_template('services/index.html',
                            static_content=static_content)
-
-
 
 
 @app.route('/auth')
 def auth():
     return render_template('auth/index.html')
 
-@app.route('/appointment',  methods=['get', 'post'])
+
+@app.route('/appointment', methods=['get', 'post'])
 def appointment():
     date = datetime.date.today()
 
     time_list = [
         {
-            "id_time":"sad1",
+            "id_time": "sad1",
             "time": "09:00"
         },
         {
@@ -164,13 +144,8 @@ def appointment():
                                email_input=email_input)
 
 
-
-
-
-
 @app.route('/dev', methods=['get', 'post'])
 def dev():
-
     date = datetime.date.today()
     some_text = 'пусто'
 
@@ -192,10 +167,13 @@ def masters_grid(masters_name):
         return render_template('masters/index.html', masters_name=masters_name)
 
 
+
+@app.route('/base')
+def base():
+    return render_template('base.html')
+
+
+@app.route('/prod')
+def product():
+    return render_template('index_product.html')
 """
-
-if __name__ == '__main__':
-    app.run(debug=True)
-
-
-

@@ -7,12 +7,13 @@ from sqlalchemy.orm import Session
 from sqlalchemy.pool import NullPool
 from sqlalchemy.engine.base import Engine
 
-from app.schemas import (
+from models.schemas import (
     ConfigDB,
     services_name_dict
 )
-from declarativeModels import (
+from models.declarativeModels import (
     Content,
+    Services,
     Masters,
     ContentType
 )
@@ -80,11 +81,10 @@ class AlchemyManager(CreateEngine):
 
 
 class ContentMasters:
-
     @staticmethod
     def get(
-            masters_name: str,
-            manager: AlchemyManager
+            manager: AlchemyManager,
+            masters_name: str
     ) -> dict:
 
         header = services_name_dict.get(masters_name)
@@ -105,8 +105,6 @@ class ContentMasters:
             }
 
         return static_content
-
-
     @staticmethod
     def _type_filtering(masters_list):
 
@@ -127,5 +125,31 @@ class ContentMasters:
             tmp_list.append(tmp_dict)
 
 
+class ContentServices:
+
+    @staticmethod
+    def get(
+            manager: AlchemyManager,
+            services_name: str
+    ):
+        static_content = {
+            "header": services_name
+        }
+
+        with Session(bind=manager.engine) as session:
+
+            static_content.update(
+
+                title=session.query(Content).filter(
+                    criterion=[Content.type == ContentType.text,
+                               Content.page == f"services/{services_name}"]
+                ),
+
+                content_list=session.query(Services).filter(
+                    criterion=Services.type == services_name
+                )
+            )
+
+        return static_content
 
 
