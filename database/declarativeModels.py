@@ -3,6 +3,7 @@ from sqlalchemy.orm import mapped_column
 from sqlalchemy.orm import DeclarativeBase
 from sqlalchemy.orm import relationship
 from sqlalchemy import ForeignKey
+from enum import Enum as enumEnum
 
 from datetime import datetime
 from typing import List, Annotated, Optional
@@ -33,8 +34,8 @@ class Masters(BaseBd):
     email: Mapped[str]
     phone_number: Mapped[str_20]
     work_schedule: Mapped[str]
+    type: Mapped[str_50] = mapped_column()
 
-    services_list: Mapped[List['MastersService']] = relationship()
     appointments_list: Mapped[List['Appointments']] = relationship()
     content_list: Mapped[List['Content']] = relationship()
 
@@ -59,16 +60,20 @@ class Appointments(BaseBd):
     date_time: Mapped[datetime]
     extra: Mapped[Optional[str]]
 
+class ContentType(enumEnum):
+    img: "img"
+    text: "text"
+
 class Content(BaseBd):
     __tablename__ = "content"
     id: Mapped[uuid_pk]
     master_id: Mapped[Optional[uuid_]] = mapped_column(ForeignKey("masters.id"))
     service_name: Mapped[Optional[str_50]] = mapped_column(ForeignKey("services.name"))
     page: Mapped[str]
-    type: Mapped[str]
+    type: Mapped[ContentType]
     extra: Mapped[Optional[str]]
 
 class MastersService(BaseBd):
     __tablename__ = "masters_service"
     master_id: Mapped[int] = mapped_column(ForeignKey("masters.id"))
-    service_type: Mapped[str_50] = mapped_column(ForeignKey("services.name"))
+    service_name: Mapped[str_50] = mapped_column(ForeignKey("services.name"))

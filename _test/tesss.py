@@ -84,21 +84,5 @@ def encoding():
     with open(os.path.join(ddir, f'{name}.txt'), 'w', encoding='UTF-8') as file:
         file.write(tmp)
 
-import uuid
 
-id = str(uuid.uuid4())
-print(str(id))
-
-tmp = 0
-iter_ = 0
-while True:
-    iter_ += 1
-    if tmp != len(id):
-        tmp = len(id)
-        print(tmp)
-        print('No!')
-
-    d, m = divmod(iter_, 100000000)
-    if d == 1:
-        print(100000000)
-        iter_ = 1
+print(os.path.abspath(''))

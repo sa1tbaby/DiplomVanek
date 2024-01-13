@@ -1,6 +1,10 @@
 from pydantic import BaseModel
 from typing import Annotated
 from uuid import uuid4
+import os.path
+
+project_dir = os.path.abspath(os.path.pardir)
+config_dir = os.path.join(project_dir, 'configs')
 
 uuid4_len = len(str(uuid4()))
 uuid_ = Annotated[str, uuid4_len]
@@ -8,7 +12,7 @@ uuid_ = Annotated[str, uuid4_len]
 str_50 = Annotated[str, uuid4_len]
 str_20 = Annotated[str, uuid4_len]
 
-service_name_dict = {
+services_name_dict = {
     "eyebrows": "Брови",
     "nails": "Ногти",
     "coloring": "Окрашивание",

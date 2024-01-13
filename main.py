@@ -1,17 +1,14 @@
 import datetime
 import os.path
 
+from app.schemas import config_dir
+
 from flask import Flask, render_template, request, redirect, url_for
-from database import declarativeModels
-from database.alchemyManager import AlchemyManager
-
-import os.path
-
-cur_dir = os.path.curdir
-project_dir = os.path.abspath(os.path.pardir)
-config_dir = os.path.join(cur_dir, 'configs')
+from database.alchemyManager import AlchemyManager, ContentMasters
+from database.declarativeModels import Content
 
 app = Flask(__name__)
+
 Manager = AlchemyManager(
     config_path=config_dir
 )
@@ -20,18 +17,18 @@ Manager = AlchemyManager(
 def start():
 
     gif = Manager.get_table_where(
-        declarativeModels.Content,
-        [declarativeModels.Content.page == 'main', declarativeModels.Content.type == 'img']
+        Content,
+        [Content.page == 'main', Content.type == 'img']
     )
 
     info = Manager.get_table_where(
-        declarativeModels.Content,
-        [declarativeModels.Content.page == 'main/info', declarativeModels.Content.type == 'text']
+        Content,
+        [Content.page == 'main/info', Content.type == 'text']
     )
 
     contacts = Manager.get_table_where(
-        declarativeModels.Content,
-        [declarativeModels.Content.page == "main/contacts", declarativeModels.Content.type == "text"]
+        Content,
+        [Content.page == "main/contacts", Content.type == "text"]
     )
 
     static_content = {
@@ -70,37 +67,7 @@ def masters():
 
     masters_name = request.values.get('masters_name')
 
-    header = declarativeModels.service_name_dict.get(masters_name)
-
-    masters_list = Manager.get_table_where(
-        declarativeModels.Masters,
-        [declarativeModels.Masters.service_type == masters_name]
-    )
-
-    tmp_list = []
-
-    for master in masters_list:
-
-        tmp_dict = dict()
-
-        for master_content in master.content:
-            if master_content.type == 'img':
-                tmp_dict.update(img=master_content.extra)
-            else:
-                tmp_dict.update(text=master_content.extra)
-
-        tmp_list.append(tmp_dict)
-
-    static_content = {
-        "header": header,
-        "title": Manager.get_table_where(
-            declarativeModels.Content,
-            [declarativeModels.Content.type == 'text',
-             declarativeModels.Content.page == f'services/{masters_name}']
-        ),
-        "content_list": tmp_list
-    }
-
+    static_content = ContentMasters.get(masters_name, Manager)
 
     return render_template('masters/index.html',
                            static_content=static_content)
@@ -110,7 +77,7 @@ def services():
 
     service_name = request.values.get('service_name')
 
-    header = declarativeModels.service_name_dict.get(service_name)
+    header = declarativeModels.services_name_dict.get(service_name)
 
     static_content = {
         "header": header,
