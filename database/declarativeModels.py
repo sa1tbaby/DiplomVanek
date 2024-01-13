@@ -69,6 +69,7 @@ class Appointments(BaseBd):
     date_time: Mapped[datetime]
     extra: Mapped[str] = mapped_column(nullable=True)
 
+
 class Content(BaseBd):
     __tablename__ = "content"
     id: Mapped[int] = mapped_column(primary_key=True)
@@ -83,15 +84,3 @@ class Content(BaseBd):
     page: Mapped[str]
     type: Mapped[str]
     extra: Mapped[str] = mapped_column(nullable=True)
-
-
-"""
-class MastersService(BaseBd):
-    __tablename__ = "masters_service"
-    master_id: Mapped[int] = mapped_column(
-        ForeignKey("masters.id")
-    )
-    service_type: Mapped[str] = mapped_column(
-        String(50)
-    )
-"""
