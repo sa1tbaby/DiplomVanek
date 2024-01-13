@@ -1,4 +1,4 @@
-from app.alchemyManager import AlchemyManager
+from app.handlers.alchemyManager import AlchemyManager
 from models.schemas import config_dir
 from flask import Flask
 

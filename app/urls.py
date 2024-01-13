@@ -1,38 +1,19 @@
 import datetime
 
 from flask import render_template, request
-from app.alchemyManager import ContentMasters, ContentServices
-from models.declarativeModels import Content
+
 from app import app, manager
+from app.handlers.contentMasters import ContentMasters
+from app.handlers.contentServices import ContentServices
+from app.handlers.contentGeneral import ContentGeneral
 
 
 @app.route('/start')
 def start():
-    gif = Manager.get_table_where(
-        Content,
-        [Content.page == 'main', Content.type == 'img']
-    )
 
-    info = Manager.get_table_where(
-        Content,
-        [Content.page == 'main/info', Content.type == 'text']
-    )
-
-    contacts = Manager.get_table_where(
-        Content,
-        [Content.page == "main/contacts", Content.type == "text"]
-    )
-
-    static_content = {
-        "gif": gif,
-        "info": info,
-        "contacts": contacts
-    }
+    static_content = ContentGeneral.get(manager=manager)
 
     return render_template('start/index.html', static_content=static_content)
-
-
-
 
 
 @app.route('/masters')

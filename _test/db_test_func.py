@@ -1,5 +1,5 @@
 from models import declarativeModels
-from app.alchemyManager import AlchemyManager
+from app.handlers.alchemyManager import AlchemyManager
 from sqlalchemy.orm import sessionmaker, Session
 import os.path
 

@@ -1,7 +1,7 @@
 import datetime
 
 from flask import render_template, request
-from app.alchemyManager import ContentMasters
+from app.handlers.alchemyManager import ContentMasters
 from models.declarativeModels import Content
 from app import app, Manager
 
