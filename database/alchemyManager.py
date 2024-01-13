@@ -1,8 +1,8 @@
 from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
 from sqlalchemy.engine.base import Engine
 from app.schemas import ConfigDB
-
+from sqlalchemy.orm import Session
+from sqlalchemy.pool import NullPool
 from json import load
 import os.path
 
@@ -36,7 +36,7 @@ class CreateEngine(BaseDB):
         return create_engine(
             url=self._getConnStr(),
             echo=self._config.engine_echo,
-            pool_size=self._config.engine_pool_size
+            poolclass=NullPool
         )
 
     def _getConnStr(self) -> str:
@@ -61,4 +61,9 @@ class AlchemyManager(CreateEngine):
             config_name=config_name
         )
         self.engine = self.getEngine()
-        self.session = sessionmaker(bind=self.engine)
+
+    def get_table_where(self, table, criterion:list):
+        with Session(bind=self.engine) as session:
+            test = session.query(table).where(*criterion)
+
+        return test

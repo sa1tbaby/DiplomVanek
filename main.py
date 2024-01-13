@@ -2,55 +2,46 @@ import datetime
 import os.path
 
 from flask import Flask, render_template, request, redirect, url_for
+from database import declarativeModels
+from database.alchemyManager import AlchemyManager
+
 import os.path
 
 cur_dir = os.path.curdir
-app = Flask(__name__)
+project_dir = os.path.abspath(os.path.pardir)
+config_dir = os.path.join(cur_dir, 'configs')
 
-@app.route('/carousel')
-def main():
-    menu_list = [
-        {
-            'number': 1,
-            'src': 'img/services/coloring.jpg',
-            'title': 'Услуги колориста'
-        },
-        {
-            'number': 2,
-            'src': 'img/services/haircut.jpg',
-            'title': 'Услуги парикмахера'
-        },
-        {
-            'number': 3,
-            'src': 'img/services/lash_brow.jpg',
-            'title': 'Услуги бровиста'
-        },
-        {
-            'number': 4,
-            'src': 'img/services/nails.jpg',
-            'title': 'Услуги ногтевого сервиса'
-        },
-        {
-            'number': 5,
-            'src': 'img/services/nails_2.jpg',
-            'title': 'Услуги ногтевого сервиса'
-        },
-        {
-            'number': 6,
-            'src': 'img/services/solarium.jpg',
-            'title': 'Услуги солярия'
-        },
-        {
-            'number': 7,
-            'src': 'img/services/sugaring.jpg',
-            'title': 'Услуги шугаринга'
-        },
-    ]
-    return render_template('services_carousel.html', menu_list=menu_list)
+app = Flask(__name__)
+Manager = AlchemyManager(
+    config_path=config_dir
+)
 
 @app.route('/start')
 def start():
-    return render_template('start/index.html')
+
+    gif = Manager.get_table_where(
+        declarativeModels.Content,
+        [declarativeModels.Content.page == 'main', declarativeModels.Content.type == 'img']
+    )
+
+    info = Manager.get_table_where(
+        declarativeModels.Content,
+        [declarativeModels.Content.page == 'main/info', declarativeModels.Content.type == 'text']
+    )
+
+    contacts = Manager.get_table_where(
+        declarativeModels.Content,
+        [declarativeModels.Content.page == "main/contacts", declarativeModels.Content.type == "text"]
+    )
+
+    static_content = {
+        "gif": gif,
+        "info": info,
+        "contacts": contacts
+    }
+
+    return render_template('start/index.html', static_content=static_content)
+
 
 @app.route('/base')
 def base():
@@ -76,62 +67,65 @@ def masters_grid(masters_name):
 
 @app.route('/masters')
 def masters():
+
     masters_name = request.values.get('masters_name')
 
-    masters_table = {
-        'name': 'some_name',
-        'title': 'some_title',
+    header = declarativeModels.service_name_dict.get(masters_name)
+
+    masters_list = Manager.get_table_where(
+        declarativeModels.Masters,
+        [declarativeModels.Masters.service_type == masters_name]
+    )
+
+    tmp_list = []
+
+    for master in masters_list:
+
+        tmp_dict = dict()
+
+        for master_content in master.content:
+            if master_content.type == 'img':
+                tmp_dict.update(img=master_content.extra)
+            else:
+                tmp_dict.update(text=master_content.extra)
+
+        tmp_list.append(tmp_dict)
+
+    static_content = {
+        "header": header,
+        "title": Manager.get_table_where(
+            declarativeModels.Content,
+            [declarativeModels.Content.type == 'text',
+             declarativeModels.Content.page == f'services/{masters_name}']
+        ),
+        "content_list": tmp_list
     }
 
-    static_content = [
-        {
-            'name': 'some_name',
-            'title': 'some_title',
-            'link': 'img/masters/them1.jpg'
-        },
-        {
-            'name': 'some_name',
-            'title': 'some_title',
-            'link': 'img/masters/them1.jpg'
-        },
-        {
-            'name': 'some_name',
-            'title': 'some_title',
-            'link': 'img/masters/them1.jpg'
-        },
-    ]
 
     return render_template('masters/index.html',
-                           masters_table=masters_table,
                            static_content=static_content)
 
 @app.route('/services')
 def services():
+
     service_name = request.values.get('service_name')
 
+    header = declarativeModels.service_name_dict.get(service_name)
 
-    services_table = {
-        'name': 'some_name',
-        'title': 'some_title',
+    static_content = {
+        "header": header,
+        "title": Manager.get_table_where(
+            declarativeModels.Content,
+            [declarativeModels.Content.type == 'text',
+             declarativeModels.Content.page == f'services/{service_name}']
+        ),
+        "content_list": Manager.get_table_where(
+            declarativeModels.Services,
+            [declarativeModels.Services.type == service_name]
+        )
     }
 
-    static_content = [
-        {
-            'name': 'some_name',
-            'title': 'some_title'
-        },
-        {
-            'name': 'some_name',
-            'title': 'some_title'
-        },
-        {
-            'name': 'some_name',
-            'title': 'some_title'
-        },
-    ]
-
     return render_template('services/index.html',
-                           services_table=services_table,
                            static_content=static_content)
 
 

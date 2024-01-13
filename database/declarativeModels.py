@@ -8,6 +8,14 @@ from sqlalchemy import String
 from datetime import datetime
 from typing import List
 
+service_name_dict = {
+    "eyebrows": "Брови",
+    "nails": "Ногти",
+    "coloring": "Окрашивание",
+    "sugaring": "Шугаринг",
+    "haircut": "Стрижка",
+    "solarium": "Солярий"
+}
 
 class BaseBd(DeclarativeBase):
     pass
@@ -33,6 +41,7 @@ class Masters(BaseBd):
     email: Mapped[str]
     phone_number: Mapped[str] = mapped_column(String(20))
     work_schedule: Mapped[str]
+    service_type: Mapped[str] = mapped_column(nullable=True)
 
     appointment: Mapped[List['Appointments']] = relationship()
     content: Mapped[List['Content']] = relationship()

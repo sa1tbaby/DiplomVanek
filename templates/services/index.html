@@ -8,34 +8,37 @@
 {% block main %}
 <div class="container py-4">
 
-    <div class="p-5 mb-4 bg-body-tertiary rounded-3">
+    <div class="p-5 mb-4 bg-body-tertiary rounded-3 text-center">
       <div class="container-fluid py-5">
-        <h1 class="display-5 fw-bold">{{services_table.name}}</h1>
-        <p class="col-md-8 fs-4">{{services_table.title}}</p>
-        <button class="btn btn-primary btn-lg" type="button">Example button</button>
+        <h1 class="display-5 fw-bold">{{static_content.header}}</h1>
+          {% for content in static_content.title %}
+        <p class="fs-4">{{content.extra}}</p>
+          {% endfor %}
+        <button class="btn btn-primary btn-lg " type="button" disabled>Ниже Вы можете ознакомиться с прайс листом</button>
       </div>
     </div>
-    {% for content in static_content %}
+    {% for content in static_content.content_list %}
 
     <div class="row align-items-md-stretch">
 
       <div class="col-md-6">
         <div class="h-100 p-5 text-bg-dark rounded-3">
           <h2>{{content.name}}</h2>
-          <p>{{content.title}}</p>
-          <button class="btn btn-outline-light" type="button">Example button</button>
+          <p></p>
+          <button class="btn btn-outline-light" type="button">Записаться</button>
         </div>
       </div>
 
       <div class="col-md-6">
         <div class="h-100 p-5 bg-body-tertiary border rounded-3">
-          <h2>{{content.name}}</h2>
+          <h2>Стоимость</h2>
           <p>{{content.title}}</p>
-          <button class="btn btn-outline-secondary" type="button">Example button</button>
+          <button class="btn btn-outline-secondary" type="button" disabled>{{content.cost}}</button>
         </div>
       </div>
     </div>
     <hr class="my-4">
+
     {% endfor %}
   </div>
 {% endblock main %}
