@@ -13,7 +13,7 @@ def start():
 
     static_content = ContentGeneral.get(manager=manager)
 
-    return render_template('start/step1.html', static_content=static_content)
+    return render_template('start/index.html', static_content=static_content)
 
 
 @app.route('/masters')
@@ -25,7 +25,7 @@ def masters():
         masters_name=masters_name
     )
 
-    return render_template('masters/step1.html',
+    return render_template('masters/index.html',
                            static_content=static_content)
 
 
@@ -38,13 +38,13 @@ def services():
         services_name=service_name
     )
 
-    return render_template('services/step1.html',
+    return render_template('services/index.html',
                            static_content=static_content)
 
 
 @app.route('/auth')
 def auth():
-    return render_template('auth/step1.html')
+    return render_template('auth/index.html')
 
 
 @app.route('/appointment', methods=['get', 'post'])
@@ -58,6 +58,7 @@ def appointment():
     last_name = ''
     phone_input = ''
     email_input = ''
+    masters_list = []
 
     if request.method == "POST":
 
@@ -71,23 +72,25 @@ def appointment():
         phone_input = request.form.get('phone_input')
         email_input = request.form.get('email_input')
 
-        return render_template('appointment/step1.html',
+        return render_template('appointment/index.html',
                                date=date,
                                service_type=service_type,
                                time_hidden_kostil_yopta=time_hidden_kostil_yopta,
                                last_name=last_name,
                                first_name=first_name,
                                phone_input=phone_input,
-                               email_input=email_input)
+                               email_input=email_input,
+                               masters_list=masters_list)
     else:
-        return render_template('appointment/step1.html',
+        return render_template('appointment/index.html',
                                date=date,
                                service_type=service_type,
                                time_hidden_kostil_yopta=time_hidden_kostil_yopta,
                                last_name=last_name,
                                first_name=first_name,
                                phone_input=phone_input,
-                               email_input=email_input)
+                               email_input=email_input,
+                               masters_list=masters_list)
 
 
 @app.route('/dev', methods=['get', 'post'])
@@ -110,7 +113,7 @@ def masters_grid(masters_name):
     masters_spec = {'haircut', 'sugaring', 'coloring', 'nails', 'eyebrows'}
 
     if masters_name in masters_spec:
-        return render_template('masters/step1.html', masters_name=masters_name)
+        return render_template('masters/index.html', masters_name=masters_name)
 
 
 

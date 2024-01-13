@@ -1,0 +1,149 @@
+{% extends "base.html" %}
+
+{% block style %}
+.box div{display:inline-block;}
+.gis {}
+{% endblock style %}
+
+{% block main %}
+
+<!-- 2. Подключить CSS-файл библиотеки Bootstrap 3 DateTimePicker -->
+<link rel ="stylesheet" href ="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/css/bootstrap-datetimepicker.min.css">
+<!-- 3. Подключить библиотеку jQuery -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script>
+    $(function () {
+        $('#datething').datetimepicker({
+             "locale": moment.localeData("zh") ? "zh" : "en"
+        });
+    });
+</script>
+<script>
+ function inputEdit(id, input_id) {
+  document.getElementById(input_id).value = id;
+}
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/js/bootstrap-datetimepicker.min.js"></script>
+
+
+<div class="container">
+
+    <div class="row g-5">
+
+        <div class="col-md-3 col-lg-2"></div>
+        <div class="col-md-6 col-lg-8">
+
+            <h4 class="mb-3" style="margin-top: 35px; text-align: center;">Для записи, заполните все поля </h4>
+
+            <hr class="my-4">
+
+            <form class="needs-validation" novalidate="" method="post">
+
+            <div class="row g-3">
+
+                <div class="col-sm-6">
+                <label for="firstName" class="form-label">Имя</label>
+                <input name="first_name" class="form-control" id="firstName" placeholder="" value="{{first_name}}" required>
+                <div class="invalid-feedback">
+                  Введите Имя
+                </div>
+              </div>
+
+                <div class="col-sm-6">
+                    <label for="lastName" class="form-label">Фамилия</label>
+                    <input name="last_name" type="text" class="form-control" id="lastName" placeholder="" value="{{last_name}}" required>
+                    <div class="invalid-feedback">
+                      Введите Фамилию
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+                <label for="email" class="form-label">Email <span class="text-body-secondary">(Optional)</span></label>
+                <input name="email_input" type="email" class="form-control" id="email" placeholder="you@example.com" value="{{email_input}}">
+                <div class="invalid-feedback">
+                  Please enter a valid email address for shipping updates.
+                </div>
+              </div>
+
+                <div class="col-sm-6">
+
+                    <label for="phone_number" class="form-label">Номер телефона</label>
+                    <input name="phone_input" type="number" class="form-control" id="phone_number" placeholder="+79991112233" value="{{phone_input}}">
+                    <div class="invalid-feedback">
+                        Пожалуйста введите номер телефона
+                    </div>
+                </div>
+
+                <hr class="my-4">
+
+                <div class="col-sm-2"></div>
+
+                <div class="col-sm-4">
+                    <select name="service_type" class="form-select" required="" aria-label="select example">
+                        <option value="{{service_type}}">{{service_type}}</option>
+                        {% for item in services_list %}
+                            <option value="{{item}}">{{item}}</option>
+                        {% endfor %}
+                    </select>
+                    <div class="invalid-feedback">Example invalid select feedback</div>
+
+                </div>
+
+                <div class="col-sm-4">
+
+                  <input type="date" class="form-control" id="date-input" name="date" value="{{date}}">
+
+                </div>
+
+                <div class="col-sm-2"></div>
+
+            </div>
+
+            {% for masters in masters_list %}
+                <hr class="my-4">
+                <div class="col-sm-6">
+                  <div class="card shadow-sm">
+
+                    <img src="{{ url_for('static', filename=masters.img) }}" alt="">
+
+                    <div class="card-body">
+                        <select name="service_name" class="form-select" required="" aria-label="select example">
+                                <option value="None">"Выберите услугу"</option>
+                            {% for services in masters.services %}
+                                <option value={{services.name}}>{{services.name}}</option>
+                            {% endfor %}
+                        </select>
+                        <select name="available_time" class="form-select" required="" aria-label="select example">
+                                <option value="None">"Выберите время"</option>
+                            {% for time in masters.available_time %}
+                                <option value={{time.time}}>{{time.time}}</option>
+                            {% endfor %}
+                        </select>
+                      <hr>
+                        <a class="btn btn-primary"
+                           href="{{ url_for('services', service_name='eyebrows') }}"
+                           role="button">Записаться</a>
+                    </div>
+                  </div>
+                </div>
+
+            {% endfor %}
+
+            <hr class="my-4">
+
+
+            <button class="w-100 btn btn-primary btn-lg" type="submit" id="date-submit">Проверить свободные записи</button>
+
+            </form>
+
+        </div>
+        <div class="col-md-3 col-lg-2"></div>
+    </div>
+
+
+</div>
+{% endblock main %}
+
+

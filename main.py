@@ -28,7 +28,7 @@ def start():
         "contacts": contacts
     }
 
-    return render_template('start/step1.html', static_content=static_content)
+    return render_template('start/index.html', static_content=static_content)
 
 
 @app.route('/base')
@@ -52,7 +52,7 @@ def masters():
 
     static_content = ContentMasters.get(masters_name, Manager)
 
-    return render_template('masters/step1.html',
+    return render_template('masters/index.html',
                            static_content=static_content)
 
 @app.route('/services')
@@ -75,7 +75,7 @@ def services():
         )
     }
 
-    return render_template('services/step1.html',
+    return render_template('services/index.html',
                            static_content=static_content)
 
 
@@ -83,7 +83,7 @@ def services():
 
 @app.route('/auth')
 def auth():
-    return render_template('auth/step1.html')
+    return render_template('auth/index.html')
 
 @app.route('/appointment',  methods=['get', 'post'])
 def appointment():
@@ -142,7 +142,7 @@ def appointment():
         phone_input = request.form.get('phone_input')
         email_input = request.form.get('email_input')
 
-        return render_template('appointment/step1.html',
+        return render_template('appointment/index.html',
                                date=date,
                                time_list=time_list,
                                service_type=service_type,
@@ -152,7 +152,7 @@ def appointment():
                                phone_input=phone_input,
                                email_input=email_input)
     else:
-        return render_template('appointment/step1.html',
+        return render_template('appointment/index.html',
                                date=date,
                                time_list=time_list,
                                service_type=service_type,
@@ -188,7 +188,7 @@ def masters_grid(masters_name):
     masters_spec = {'haircut', 'sugaring', 'coloring', 'nails', 'eyebrows'}
 
     if masters_name in masters_spec:
-        return render_template('masters/step1.html', masters_name=masters_name)
+        return render_template('masters/index.html', masters_name=masters_name)
 
 
 """
