@@ -51,40 +51,7 @@ def auth():
 def appointment():
     date = datetime.date.today()
 
-    time_list = [
-        {
-            "id_time": "sad1",
-            "time": "09:00"
-        },
-        {
-            "id_time": "sad2",
-            "time": "10:00"
-        },
-        {
-            "id_time": "sad3",
-            "time": "11:00"
-        },
-        {
-            "id_time": "sad4",
-            "time": "12:00"
-        },
-        {
-            "id_time": "sad5",
-            "time": "13:00"
-        },
-        {
-            "id_time": "sad6",
-            "time": "14:00"
-        },
-        {
-            "id_time": "sad7",
-            "time": "15:00"
-        },
-        {
-            "id_time": "sad8",
-            "time": "16:00"
-        },
-    ]
+
     service_type = 'Выберите услугу'
     time_hidden_kostil_yopta = 'Выберите время'
     first_name = ''

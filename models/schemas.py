@@ -21,6 +21,9 @@ services_name_dict = {
     "solarium": "Солярий"
 }
 
+time_list = [ dict(index=item, time=f"{item}:00") for item in range(12, 22, 1)]
+
+
 class ConfigDB(BaseModel):
     dialect: str = 'postgresql'
     driver: str = 'psycopg2'

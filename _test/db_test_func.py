@@ -11,8 +11,6 @@ Manager = AlchemyManager(
     config_path=config_dir
 )
 
-sss = sessionmaker(bind=Manager.engine)
-
 def create_table():
     declarativeModels.BaseBd.metadata.drop_all(Manager.engine)
     declarativeModels.BaseBd.metadata.create_all(Manager.engine)
@@ -25,3 +23,4 @@ def get_table_where(table, criterion):
 
     return test
 
+create_table()

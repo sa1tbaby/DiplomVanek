@@ -85,4 +85,6 @@ def encoding():
         file.write(tmp)
 
 
-print(os.path.abspath(''))
+def create_bd():
+    from app.handlers.alchemyManager import BaseDB
+

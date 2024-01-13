@@ -61,8 +61,8 @@ class Appointments(BaseBd):
     extra: Mapped[Optional[str]]
 
 class ContentType(enumEnum):
-    img: "img"
-    text: "text"
+    img = "img"
+    text = "text"
 
 class Content(BaseBd):
     __tablename__ = "content"
