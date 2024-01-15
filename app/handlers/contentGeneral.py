@@ -3,6 +3,8 @@ from sqlalchemy.orm import Session
 
 from models.declarativeModels import Content, ContentType
 from app.handlers.alchemyManager import AlchemyManager
+
+
 class ContentGeneral:
 
     @staticmethod

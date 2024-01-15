@@ -82,7 +82,7 @@
 
                 <div class="col-sm-4">
                     <select name="service_type" class="form-select" required="" aria-label="select example">
-                        <option value="{{service_type}}">{{service_type}}</option>
+                        <option value=None >Выберите тип услуги</option>
                         {% for item in services_list %}
                             <option value="{{item}}">{{item}}</option>
                         {% endfor %}
@@ -93,7 +93,7 @@
 
                 <div class="col-sm-4">
 
-                  <input type="date" class="form-control" id="date-input" name="date" value="{{date}}">
+                  <input type="date" class="form-control" id="date-input" name="date_input" value="{{date}}">
 
                 </div>
 
