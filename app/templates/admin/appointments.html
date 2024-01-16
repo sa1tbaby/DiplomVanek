@@ -11,75 +11,108 @@
 {% block admin %}
 
 
-
-    <table id="appointment_insert" class="table table-bordered table-sm">
-        <thead>
-            <tr>
-                <th>Клиент</th>
-                <th>Мастер</th>
-                <th>Услуга</th>
-                <th>Дата</th>
-                <th>Номер телефона</th>
-                <th>Добавить</th>
-            </tr>
-        </thead>
-        <tbody>
+    <div style="padding-bottom: 5%">
         <form name="field-asd1" action="{{ url_for('admin_appointments') }}" method="POST">
-            <tr>
-                <td>
-                    <input
-                            class="text-dark form-control disable"
-                            type="text"
-                            name="as"
-                            style="border: none; background-color: white;"
-                            value=""
-                    >
-                </td>
-                <td>
-                    <input
-                            class="text-dark form-control disable"
-                            type="text"
-                            name="as"
-                            style="border: none; background-color: white;"
-                            value=""
-                    >
-                </td>
-                <td>
-                    <input
-                            class="text-dark form-control disable"
-                            type="text"
-                            name="as"
-                            style="border: none; background-color: white;"
-                            value=""
-                    >
-                </td>
-                <td>
-                    <input
-                            class="text-dark form-control disable"
-                            type="text"
-                            name="as"
-                            style="border: none; background-color: white;"
-                            value=""
-                    >
-                </td>
-                <td>
-                    <input
-                            class="text-dark form-control disable"
-                            type="text"
-                            name="as"
-                            style="border: none; background-color: white;"
-                            value=""
-                    >
-                </td>
-                <td>
-                    <button name="button_method" type="submit" class="btn btn-primary" value="insert">Добавить</button>
-                </td>
+            <table
+                id="appointment_insert"
+                class="table table-bordered table-sm"
+            >
+            <thead>
+                <tr>
+                    <th>Клиент</th>
+                    <th>Тип услуги</th>
+                    <th>Дата</th>
+                    <th>Добавить</th>
+                </tr>
+            </thead>
+            <tbody>
 
-            </tr>
+                <tr>
+                    <td>
+                        <input class="text-dark form-control " type="text" name="user_name" list="usersnames" value="" style="border: none; background-color: white;">
+                            <datalist id="usersnames">
+                                {% for user in static_content.user_list %}
+                                    <option value="{{user.name}}">
+                                {% endfor %}
+                            </datalist>
+                    </td>
+                    <td>
+                        <select name="service_type" class="form-select" required="" aria-label="select example">
+                            <option value=None >Выберите тип услуги</option>
+                            {% for type in static_content.service_types %}
+                                <option value="{{item}}">{{type}}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                    <td>
+                        <input
+                                class="text-dark form-control disable"
+                                type="date"
+                                name="date"
+                                style="border: none; background-color: white;"
+                                value=""
+                        >
+                    </td>
+                    <td>
+                        <button name="button_method" type="submit" class="btn btn-primary" value="insert">Продолжить</button>
+                    </td>
+                </tr>
 
-           </form>
-        </tbody>
-    </table>
+            </tbody>
+            </table>
+            {% for item in appointment_continue%}
+            {% endfor %}
+            <hr>
+            <table
+                id="appointment_insert_next"
+                class="table table-bordered table-sm"
+            >
+            <thead>
+                <tr>
+                    <th>Мастер</th>
+                    <th>Услуга</th>
+                    <th>Время</th>
+                    <th>Добавить</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <input class="text-dark form-control " type="text" name="master_name" list="mastersnames" value="" style="border: none; background-color: white;">
+                            <datalist id="mastersnames">
+                                {% for master in static_content.masters_list %}
+                                {% if master.type == service_type %}
+                                    <option value="{{master.name}}">
+                                {% endif %}
+                                {% endfor %}
+                            </datalist>
+                    </td>
+                    <td>
+                        <select name="service_type" class="form-select" required="" aria-label="select example">
+                            <option value=None >Выберите тип услуги</option>
+                            {% for type in static_content.service_types %}
+                                <option value="{{item}}">{{type}}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                    <td>
+                        <input
+                                class="text-dark form-control disable"
+                                type="date"
+                                name="date"
+                                style="border: none; background-color: white;"
+                                value=""
+                        >
+                    </td>
+                    <td>
+                        <button name="button_method" type="submit" class="btn btn-primary" value="insert">Продолжить</button>
+                    </td>
+                </tr>
+
+            </tbody>
+            </table>
+        </form>
+    </div>
     <hr>
     <table id="appointments" class="table table-bordered table-sm " style="height: 100%;">
         <thead>
@@ -89,67 +122,55 @@
                 <th>Мастер</th>
                 <th>Услуга</th>
                 <th>Дата</th>
-                <th>Номер телефона</th>
+                <th>Доп информация</th>
                 <th>Изменить</th>
                 <th>Удалить</th>
             </tr>
         </thead>
         <tbody>
-        {% for content in static_content.appointments %}
+        {% for appointment in static_content.appointments %}
         <form name="field-asd1" action="{{ url_for('admin_appointments') }}" method="POST">
             <tr>
                 <td>
-                    <input
-                            class="text-dark form-control disable"
-                            type="text"
-                            name="{{content.id}}"
-                            style="border: none; background-color: white;"
-                            value="{{content.id}}"
-                    >
+                    <a name="appointment.id">{{appointment.id}}</a>
+                </td>
+                <td>
+                    <a name="appointment.user_id">{{appointment.user_id}}</a>
                 </td>
                 <td>
                     <input
-                            class="text-dark form-control disable"
+                            class="text-dark form-control"
                             type="text"
-                            name="{{content.user_id}}"
+                            name="appointment.master_id"
                             style="border: none; background-color: white;"
-                            value="{{content.user_id}}"
+                            value="{{appointment.master_id}}"
                     >
                 </td>
                 <td>
                     <input
                             class="text-dark form-control"
                             type="text"
-                            name="{{content.master_id}}"
-                            style="border: none; background-color: white;"
-                            value="{{content.master_id}}"
-                    >
-                </td>
-                <td>
-                    <input
-                            class="text-dark form-control"
-                            type="text"
-                            name="{{content.service_name}}"
+                            name="appointment.service_name"
                             style="border: none; background-color: white; width: auto;"
-                            value="{{content.service_name}}"
+                            value="{{appointment.service_name}}"
                     >
                 </td>
                 <td>
                     <input
                             class="text-dark form-control"
                             type="datetime-local"
-                            name="{{content.date_time}}"
+                            name="appointment.date_time"
                             style="border: none; background-color: white; width: auto;"
-                            value="{{content.date_time}}"
+                            value="{{appointment.date_time}}"
                     >
                 </td>
                 <td>
                     <input
                             class="text-dark form-control"
                             type="text"
-                            name="${{content.extra}}"
+                            name="appointment.extra"
                             style="border: none; background-color: white;"
-                            value="{{content.extra}}"
+                            value="{{appointment.extra}}"
                     >
                 </td>
                 <td>
