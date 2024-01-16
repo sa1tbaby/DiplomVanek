@@ -1,8 +1,12 @@
 
 
 
-class AppointmentsTable:
+class AdminOperations:
 
     @staticmethod
-    def update():
+    def update(table, form):
+        pass
+
+    @staticmethod
+    def insert(table, form):
         pass

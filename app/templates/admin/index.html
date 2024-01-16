@@ -1,99 +1,78 @@
 {% extends "base.html" %}
 
 {% block head %}
-<script src="{{ url_for('static', filename='js/sidebars.js') }}"></script>
-<link href="{{ url_for('static', filename='css/sidebars.css') }}" rel="stylesheet">
-{% block head_admin %}
-{% endblock head_admin %}
+  <script src="{{ url_for('static', filename='js/sidebars.js') }}"></script>
+  <link href="{{ url_for('static', filename='css/sidebars.css') }}" rel="stylesheet">
+
+  {% block head_admin %}
+  {% endblock head_admin %}
+
 {% endblock head %}
-
-
 
 {% block style %}
   .verticalLine {
     border-right: 6rem #ff0000;
   }
+  .admin-panel-2 {
+    float: left;
+    width: 15%;
+    height: 100%;
+    max-width: 15%;
+    min-width: 15%;
+  }
+  .admin-panel-8 {
+    padding: 2% 3% 3% 3%;
+    float: left;
+    text-align: center;
+    border-left: 3px solid black;
+    height: 100%;
+    max-width: 85%;
+    min-width: 85%;
+    width: 85%
+  }
+
 {% endblock style %}
 
 {% block main %}
 
-
-
-  <div class="row">
-      <div class="col-md-2">
-        </div>
-      <div class="col-md-2 border-end border-bottom">
-        <ul class="list-unstyled ps-0 " style="background=">
-          <li class="mb-1">
-            <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
-              Пользовательские данные
-            </button>
-            <div class="collapse show" id="home-collapse">
-              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Записи</a></li>
-                <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Пользователи</a></li>
-                <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Мастера</a></li>
-              </ul>
-            </div>
-          </li>
-          <li class="mb-1">
-            <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
-              Dashboard
-            </button>
-            <div class="collapse" id="dashboard-collapse">
-              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Overview</a></li>
-                <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Weekly</a></li>
-                <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Monthly</a></li>
-                <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Annually</a></li>
-              </ul>
-            </div>
-          </li>
-          <li class="mb-1">
-            <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
-              Orders
-            </button>
-            <div class="collapse" id="orders-collapse">
-              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">New</a></li>
-                <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Processed</a></li>
-                <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Shipped</a></li>
-                <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Returned</a></li>
-              </ul>
-            </div>
-          </li>
-          <li class="border-top my-3"></li>
-          <li class="mb-1">
-            <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
-              Account
-            </button>
-            <div class="collapse" id="account-collapse">
-              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">New...</a></li>
-                <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Profile</a></li>
-                <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Settings</a></li>
-                <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Sign out</a></li>
-              </ul>
-            </div>
-          </li>
-    </ul>
-      </div>
-
-      <div class="col-md-6">
-      {% block admin %}
-
-      {% endblock admin %}
-      </div>
-          <div class="col-md-1">
-        </div>
+  <div class="admin-panel-2" style="width: 280px;">
+      <ul class="list-unstyled ps-0">
+        <li class="mb-1">
+          <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
+            Персональные данные
+          </button>
+          <div class="collapse show" id="home-collapse">
+            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+              <li><a href="{{ url_for('admin_users')}}" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Клиенты</a></li>
+              <li><a href="{{ url_for('admin_appointments')}}" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Записи</a></li>
+              <li><a href="{{ url_for('admin_masters')}}" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Мастера</a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="mb-1">
+          <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
+            Контент
+          </button>
+          <div class="collapse" id="orders-collapse">
+            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+              <li><a href="{{ url_for('admin_general')}}" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Главная страница</a></li>
+              <li><a href="{{ url_for('admin_services')}}" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Услуги</a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="border-top my-3"></li>
+        <li class="mb-1">
+          <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
+            Account
+          </button>
+        </li>
+      </ul>
     </div>
 
+  <div class="admin-panel-8">
+  {% block admin %}
 
-
-
-
-
-
-
+  {% endblock admin %}
+  </div>
 
 {% endblock main %}

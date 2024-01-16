@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block head %}
+  <script src="{{ url_for('static', filename='js/sidebars.js') }}"></script>
+  <link href="{{ url_for('static', filename='css/sidebars.css') }}" rel="stylesheet">
+
+{% endblock head %}
+
+{% block style %}
+  .verticalLine {
+    border-right: 6rem #ff0000;
+  }
+  .admin-panel-2 {
+    float: left;
+    width: 20%;
+    height: 100%;
+    max-width: 20%;
+    min-width: 20%;
+  }
+  .admin-panel-8 {
+    padding: 0px 5% 0px 5%;
+    float: left;
+    text-align: center;
+    border-left: 3px solid black;
+    height: 100%;
+    max-width: 50%;
+    min-width: 80%;
+    width: 80%;
+  }
+
+{% endblock style %}
+
+{% block main %}
+
+<div class="">
+
+</div>
+
+{% endblock main %}

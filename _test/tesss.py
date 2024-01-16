@@ -85,6 +85,16 @@ def encoding():
         file.write(tmp)
 
 
+def ttt_a():
+    ss = '110110110110110110110110110110'
+
+    for i, j in ss:
+        print(i, j)
+
+ttt_a()
+
 def create_bd():
-    from app.handlers.alchemyManager import BaseDB
+    from uuid import uuid4
+    uuid4_len = len('bc387056-9328-4c2f-9a1e-35f5fb8f7ce2')
+    print(uuid4_len)
 

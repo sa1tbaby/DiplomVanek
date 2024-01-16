@@ -1,0 +1,175 @@
+{% extends "admin/index.html" %}
+
+{% block head_admin %}
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
+{% endblock head_admin %}
+
+{% block admin %}
+    <table id="masters-insert" class="table table-bordered table-sm">
+        <thead>
+            <tr>
+                <th>ФИО</th>
+                <th>Email</th>
+                <th>Номер телефона</th>
+                <th>Тип услуг</th>
+                <th>Добавить</th>
+            </tr>
+        </thead>
+        <tbody>
+        <form name="field-insert" action="{{ url_for('admin_masters') }}" method="POST">
+            <tr>
+                <td>
+                    <input
+                            class="text-dark form-control disable"
+                            type="text"
+                            name="name"
+                            style="border: none; background-color: white;"
+                    >
+                </td>
+                <td>
+                    <input
+                            class="text-dark form-control disable"
+                            type="text"
+                            name="email"
+                            style="border: none; background-color: white;"
+                    >
+                </td>
+                <td>
+                    <input
+                            class="text-dark form-control disable"
+                            type="text"
+                            name="phone_number"
+                            style="border: none; background-color: white;"
+                    >
+                </td>
+                <td>
+                    <input
+                            class="text-dark form-control disable"
+                            type="text"
+                            name="type"
+                            style="border: none; background-color: white;"
+                    >
+                </td>
+                <td>
+                    <button name="button_method" type="submit" class="btn btn-primary" value="insert">Добавить</button>
+                </td>
+
+            </tr>
+
+           </form>
+        </tbody>
+    </table>
+    <hr>
+    <h2>Мастера</h2>
+    <table id="masters-update-delete" class="table table-bordered table-sm " style="height: 100%;">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>ФИО</th>
+                <th>Email</th>
+                <th>Номер телефона</th>
+                <th>Тип услуг</th>
+                <th>Изменить</th>
+                <th>Удалить</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for content in static_content.masters %}
+        <form name="field-asd1" action="{{ url_for('admin_users') }}" method="POST">
+            <tr>
+                <td >
+                    <a name="{{content.id}}">{{content.id}}</a>
+                </td>
+                <td>
+                    <input
+                            class="text-dark form-control disable"
+                            type="text"
+                            name="{{content.name}}"
+                            style="border: none; background-color: white;"
+                            value="{{content.name}}"
+                    >
+                </td>
+                <td>
+                    <input
+                            class="text-dark form-control"
+                            type="text"
+                            name="{{content.email}}"
+                            style="border: none; background-color: white;"
+                            value="{{content.email}}"
+                    >
+                </td>
+                <td>
+                    <input
+                            class="text-dark form-control"
+                            type="text"
+                            name="{{content.phone_number}}"
+                            style="border: none; background-color: white;"
+                            value="{{content.phone_number}}"
+                    >
+                </td>
+                <td>
+                    <input
+                            class="text-dark form-control"
+                            type="text"
+                            name="{{content.type}}"
+                            style="border: none; background-color: white; max-width: 100px; text-align: center;"
+                            value="{{content.type}}"
+                    >
+                </td>
+                <td>
+                    <button name="button_method" type="submit" class="btn btn-primary" value="update">Обновить</button>
+                </td>
+                <td>
+                    <button name="button_method" type="submit" class="btn btn-primary" value="delete">Удалить</button>
+                </td>
+            </tr>
+        </form>
+        {% endfor %}
+        </tbody>
+    </table>
+    <hr>
+    <h2>ЯНВАРЬ</h2>
+    <table id="schedule-update" class="table table-bordered table-sm ">
+        <thead>
+            <tr>
+                <th>
+                <a>id</a>
+                </th>
+                {% for content in static_content.masters[0].work_schedule %}
+                <th>
+                <a>{{loop.index}}</a>
+                </th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+        {% for content in static_content.masters %}
+        <form action="">
+            <tr>
+                <td>
+                    <a>{{content.id}}</a>
+                </td>
+                {% for schedule in content.work_schedule %}
+                <td>
+                    <input
+                        class="text-dark form-control"
+                        type="text"
+                        name="{{loop.index}}"
+                        style="border: none; background-color: white;"
+                        value="{{schedule}}"
+                    >
+                </td>
+                {% endfor %}
+                <td>
+                    <button name="button_method" type="submit" class="btn btn-primary" value="update">Обновить</button>
+                </td>
+            </tr>
+        </form>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock admin %}
