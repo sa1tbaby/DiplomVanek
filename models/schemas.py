@@ -7,22 +7,33 @@ project_dir = os.path.abspath(os.path.curdir)
 config_dir = os.path.join(project_dir, 'configs')
 
 uuid4_len = len(str(uuid4()))
-uuid_ = Annotated[str, uuid4_len]
+uuid_ = int
 
 str_50 = Annotated[str, uuid4_len]
 str_20 = Annotated[str, uuid4_len]
 
 services_name_dict = {
-    "eyebrows": "Брови",
-    "nails": "Ногти",
+    "eyebrows": "Ресницы и брови",
+    "nails": "Ногтевой сервис",
     "coloring": "Окрашивание",
     "sugaring": "Шугаринг",
     "haircut": "Стрижка",
     "solarium": "Солярий"
 }
 
-time_list = [ dict(index=item, time=f"{item}:00") for item in range(12, 22, 1)]
+con_text = {
+    "Ресницы и брови": 'aefawfawf',
+    "Ногтевой сервис": '',
+    "Окрашивание": '',
+    "Шугаринг": '',
+    "Стрижка": '',
+    "Солярий": '',
+    "us": '',
+    "extra": ''
+}
 
+
+time_list = [ dict(index=item, time=f"{item}:00:00") for item in range(12, 22, 1)]
 
 class ConfigDB(BaseModel):
     dialect: str = 'postgresql'

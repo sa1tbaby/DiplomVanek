@@ -24,8 +24,7 @@ class BaseDB:
             config_path: str,
             config_name: str
     ):
-        cur_dir = os.path.abspath(os.path.curdir)
-        config_path = os.path.join(cur_dir, config_path, config_name)
+        config_path = os.path.join(config_path, config_name)
 
         with open(config_path, 'r') as file:
             self._config = ConfigDB(**load(file))

@@ -20,7 +20,7 @@
             <thead>
                 <tr>
                     <th>Клиент</th>
-                    <th>Тип услуги</th>
+                    <th>Категория услуги</th>
                     <th>Дата</th>
                     <th>Добавить</th>
                 </tr>
@@ -29,7 +29,11 @@
 
                 <tr>
                     <td>
-                        <input class="text-dark form-control " type="text" name="user_name" list="usersnames" value="" style="border: none; background-color: white;">
+                        <input
+                                class="text-dark form-control cell-unic"
+                                type="text" name="user_name"
+                                list="usersnames"
+                                value="{{form_content.user_name}}">
                             <datalist id="usersnames">
                                 {% for user in static_content.user_list %}
                                     <option value="{{user.name}}">
@@ -38,82 +42,66 @@
                     </td>
                     <td>
                         <select name="service_type" class="form-select" required="" aria-label="select example">
-                            <option value=None >Выберите тип услуги</option>
+                            <option value="{{form_content.service_type}}">{{form_content.service_type}}</option>
                             {% for type in static_content.service_types %}
-                                <option value="{{item}}">{{type}}</option>
+                                <option value="{{type}}">{{type}}</option>
                             {% endfor %}
                         </select>
                     </td>
                     <td>
                         <input
-                                class="text-dark form-control disable"
+                                class="text-dark form-control cell-unic"
                                 type="date"
                                 name="date"
-                                style="border: none; background-color: white;"
-                                value=""
+                                value="{{form_content.date}}"
                         >
                     </td>
                     <td>
-                        <button name="button_method" type="submit" class="btn btn-primary" value="insert">Продолжить</button>
+                        <button name="button_method" type="submit" class="btn btn-primary" value="continue">Поиск</button>
                     </td>
                 </tr>
 
             </tbody>
             </table>
-            {% for item in appointment_continue%}
-            {% endfor %}
-            <hr>
-            <table
-                id="appointment_insert_next"
-                class="table table-bordered table-sm"
-            >
-            <thead>
-                <tr>
-                    <th>Мастер</th>
-                    <th>Услуга</th>
-                    <th>Время</th>
-                    <th>Добавить</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>
-                        <input class="text-dark form-control " type="text" name="master_name" list="mastersnames" value="" style="border: none; background-color: white;">
-                            <datalist id="mastersnames">
-                                {% for master in static_content.masters_list %}
-                                {% if master.type == service_type %}
-                                    <option value="{{master.name}}">
-                                {% endif %}
+            {% if form_content.button_method == 'continue' %}
+                <hr>
+                <div class="row g-5">
+                {% for item_master in masters %}
+
+                    <div class="col-lg-4">
+                        <div class="card shadow-sm">
+                        <img src="{{ url_for('static', filename=item_master.img) }}" alt="">
+                          <input name="master_id" value="{{item_master.item.id}}" type="text" hidden="">
+
+                        <div class="card-body">
+                            <select name="service_name" class="form-select" required="" aria-label="select example">
+                                    <option value="None">"Выберите услугу"</option>
+                                {% for services in item_master.services %}
+                                    <option value="{{services}}">{{services}}</option>
                                 {% endfor %}
-                            </datalist>
-                    </td>
-                    <td>
-                        <select name="service_type" class="form-select" required="" aria-label="select example">
-                            <option value=None >Выберите тип услуги</option>
-                            {% for type in static_content.service_types %}
-                                <option value="{{item}}">{{type}}</option>
-                            {% endfor %}
-                        </select>
-                    </td>
-                    <td>
-                        <input
-                                class="text-dark form-control disable"
-                                type="date"
-                                name="date"
-                                style="border: none; background-color: white;"
-                                value=""
-                        >
-                    </td>
-                    <td>
-                        <button name="button_method" type="submit" class="btn btn-primary" value="insert">Продолжить</button>
-                    </td>
-                </tr>
+                            </select>
+                            <select name="available_time" class="form-select" required="" aria-label="select example">
+                                    <option value="None">"Выберите время"</option>
+                                {% for time in item_master.available_time %}
+                                    <option value={{time}}>{{time}}</option>
+                                {% endfor %}
+                            </select>
+                          <hr>
+                            <button name="button_method"
+                                    value="insert"
+                                    class="w-100 btn btn-primary btn-lg"
+                                    type="submit" >
+                                Записаться
+                            </button>
+                        </div>
+                      </div>
+                    </div>
 
-            </tbody>
-            </table>
+                {% endfor %}
+                </div>
+            {% else %}
         </form>
     </div>
-    <hr>
     <table id="appointments" class="table table-bordered table-sm " style="height: 100%;">
         <thead>
             <tr>
@@ -132,44 +120,54 @@
         <form name="field-asd1" action="{{ url_for('admin_appointments') }}" method="POST">
             <tr>
                 <td>
-                    <a name="appointment.id">{{appointment.id}}</a>
-                </td>
-                <td>
-                    <a name="appointment.user_id">{{appointment.user_id}}</a>
-                </td>
-                <td>
                     <input
-                            class="text-dark form-control"
+                            class="text-dark form-control cell-unic-id"
                             type="text"
-                            name="appointment.master_id"
-                            style="border: none; background-color: white;"
-                            value="{{appointment.master_id}}"
+                            name="id"
+                            value="{{appointment.id}}"
                     >
                 </td>
                 <td>
                     <input
-                            class="text-dark form-control"
+                            class="text-dark form-control cell-unic"
                             type="text"
-                            name="appointment.service_name"
-                            style="border: none; background-color: white; width: auto;"
-                            value="{{appointment.service_name}}"
+                            name="user_id"
+                            value="{{appointment.user_id}}"
                     >
                 </td>
                 <td>
+                        <select name="master_id" class="form-select" required="" aria-label="select example">
+                            <option value='{{appointment.master_id}}' >{{appointment.master_id}}</option>
+                                {% for master in static_content.masters_list %}
+                                {% if master.type == appointment.extra %}
+                                <option value="{{master.name}}">{{master.name}}</option>
+                                {% endif %}
+                                {% endfor %}
+                        </select>
+                    </td>
+                    <td>
+                        <select name="service_name" class="form-select" required="" aria-label="select example">
+                            <option value='{{appointment.service_name}}' >{{appointment.service_name}}</option>
+                            {% for service in static_content.services_list %}
+                            {% if service.type == appointment.extra %}
+                                <option value="{{service.name}}">{{service.name}}</option>
+                            {% endif %}
+                            {% endfor %}
+                        </select>
+                    </td>
+                <td>
                     <input
-                            class="text-dark form-control"
+                            class="text-dark form-control cell-unic"
                             type="datetime-local"
-                            name="appointment.date_time"
-                            style="border: none; background-color: white; width: auto;"
+                            name="date_time"
                             value="{{appointment.date_time}}"
                     >
                 </td>
                 <td>
                     <input
-                            class="text-dark form-control"
+                            class="text-dark form-control cell-unic"
                             type="text"
-                            name="appointment.extra"
-                            style="border: none; background-color: white;"
+                            name="extra"
                             value="{{appointment.extra}}"
                     >
                 </td>
@@ -180,13 +178,9 @@
                     <button name="button_method" type="submit" class="btn btn-primary" value="delete">Удалить</button>
                 </td>
             </tr>
-
         </form>
         {% endfor %}
-
-
         </tbody>
     </table>
-
-
+    {% endif %}
 {% endblock admin %}

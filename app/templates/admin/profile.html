@@ -1,0 +1,103 @@
+{% extends "admin/index.html" %}
+
+{% block head_admin %}
+{% endblock head_admin %}
+
+{% block admin %}
+<section style="background-color: #eee;">
+  <div class="container py-5">
+    <div class="row">
+      <div class="col-lg-2">
+      </div>
+      <div class="col-lg-8">
+        <div class="card mb-4">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Имя</p>
+              </div>
+              <div class="col-sm-9">
+                <input
+                            class="text-dark form-control cell-unic"
+                            type="text"
+                            name="name"
+                            value="{{user.name}}"
+                    >
+              </div>
+            </div>
+            <hr>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Email</p>
+              </div>
+              <div class="col-sm-9">
+                                <input
+                            class="text-dark form-control cell-unic"
+                            type="text"
+                            name="email"
+                            value="{{user.email}}"
+                    >
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Пароль</p>
+              </div>
+              <div class="col-sm-9">
+                                <input
+                            class="text-dark form-control cell-unic"
+                            type="text"
+                            name="password"
+                            value="{{user.password}}"
+                    >
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Телефон</p>
+              </div>
+              <div class="col-sm-9">
+                                <input
+                            class="text-dark form-control cell-unic"
+                            type="text"
+                            name="phone_number"
+                            value="{{user.phone_number}}"
+                    >
+              </div>
+            </div>
+                          <hr>
+            <div class="row">
+              <div class="col-sm-9">
+
+              </div>
+
+              <div class="col-sm-3">
+                <form name="field-asd1" action="{{ url_for('auth') }}" method="POST">
+                  <button style="width: 100%;" name="button_method" type="submit" class="btn btn-primary" value="logout">Выйти</button>
+                  </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+
+          </div>
+          <div class="col-md-6">
+
+          </div>
+        </div>
+        <div class="row">
+
+
+        </div>
+      </div>
+        <div class="col-lg-2">
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock admin %}

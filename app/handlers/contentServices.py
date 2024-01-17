@@ -23,7 +23,7 @@ class ContentServices:
 
             static_content.update(
 
-                title=session.query(Content).filter(
+                title=session.query(Services).filter(
                     *[Content.type == ContentType.text,
                       Content.page == f"services/{services_name}"]
                 ),

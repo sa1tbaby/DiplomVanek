@@ -11,9 +11,9 @@
     <div class="p-5 mb-4 bg-body-tertiary rounded-3 text-center">
       <div class="container-fluid py-5">
         <h1 class="display-5 fw-bold">{{static_content.header}}</h1>
-          {% for content in static_content.title %}
-        <p class="fs-4">{{content.extra}}</p>
-          {% endfor %}
+
+        <p class="fs-4">{{static_content.extra}}</p>
+
         <button class="btn btn-primary btn-lg " type="button" disabled>Ниже Вы можете ознакомиться с прайс листом</button>
       </div>
     </div>
@@ -25,7 +25,8 @@
         <div class="h-100 p-5 text-bg-dark rounded-3">
           <h2>{{content.name}}</h2>
           <p></p>
-          <button class="btn btn-outline-light" type="button">Записаться</button>
+            <a class="btn btn-outline-light" href="{{ url_for('appointment') }}">Записаться</a>
+
         </div>
       </div>
 

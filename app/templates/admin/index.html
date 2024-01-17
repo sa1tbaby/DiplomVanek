@@ -30,6 +30,22 @@
     min-width: 85%;
     width: 85%
   }
+  .cell-unic {
+    border: none;
+    background-color: white;
+    height: 100%;
+    padding: 0px 0px 0px 0px;
+    text-align: center;
+  }
+
+  .cell-unic-id {
+    border: none;
+    background-color: white;
+    height: 100%;
+    width: 50px;
+    text-align: center;
+    padding: 0px 0px 0px 0px;
+  }
 
 {% endblock style %}
 
@@ -45,7 +61,6 @@
             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
               <li><a href="{{ url_for('admin_users')}}" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Клиенты</a></li>
               <li><a href="{{ url_for('admin_appointments')}}" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Записи</a></li>
-              <li><a href="{{ url_for('admin_masters')}}" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Мастера</a></li>
             </ul>
           </div>
         </li>
@@ -62,9 +77,8 @@
         </li>
         <li class="border-top my-3"></li>
         <li class="mb-1">
-          <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
-            Account
-          </button>
+          <a href="{{ url_for('admin')}}" class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed">Account</a>
+
         </li>
       </ul>
     </div>

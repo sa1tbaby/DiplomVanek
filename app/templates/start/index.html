@@ -31,20 +31,16 @@
     <div class="container text-center">
         <hr>
         <h1 class="display-5 fw-bold text-body-emphasis">Немного о нас</h1>
-        {% for content in static_content.info %}
         <div class="col-lg-6 mx-auto">
-            <p class="lead mb-4">{{content.extra}}</p>
+            <p class="lead mb-4">{{static_content.us}}</p>
         </div>
-        {% endfor %}
     </div>
     <div class="container text-center">
         <hr>
         <h1 class="display-5 fw-bold text-body-emphasis">Как нас найти</h1>
-        {% for content in static_content.contacts %}
         <div class="col-lg-6 mx-auto">
-            <p class="lead mb-4">{{content.extra}}</p>
+            <p class="lead mb-4">{{static_content.extra}}</p>
         </div>
-        {% endfor %}
         <br>
         <script class="gis" type="text/javascript"  charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A22d44f2c0ec01f789284f8dcd03f62e006bc98726f2b161d800eb2f696a037b0&amp;width=100%&amp;height=500px&amp;lang=ru_RU&amp;scroll=true"></script>
     </div>

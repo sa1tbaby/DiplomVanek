@@ -10,7 +10,7 @@ from typing import List, Annotated, Optional
 
 from models.schemas import uuid_, str_20, str_50
 
-uuid_pk = Annotated[uuid_, mapped_column(primary_key=True)]
+uuid_pk = Annotated[int, mapped_column(primary_key=True, autoincrement=True)]
 
 class BaseBd(DeclarativeBase):
     pass
@@ -43,7 +43,7 @@ class Masters(BaseBd):
 class Services(BaseBd):
     __tablename__ = "services"
     name: Mapped[str_50] = mapped_column(primary_key=True)
-    type: Mapped[str_50] = mapped_column()
+    type: Mapped[str_50]
     cost: Mapped[int]
 
 

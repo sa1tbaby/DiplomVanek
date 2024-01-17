@@ -179,12 +179,12 @@
                     Услуги
                   </a>
                   <ul class="dropdown-menu dropdown-menu-dark">
-                      <li><a class="dropdown-item" href="{{ url_for('services', service_name='eyebrows') }}">Брови</a></li>
-                      <li><a class="dropdown-item" href="{{ url_for('services', service_name='nails') }}">Ногти</a></li>
-                      <li><a class="dropdown-item" href="{{ url_for('services', service_name='coloring') }}">Окрашивание</a></li>
-                      <li><a class="dropdown-item" href="{{ url_for('services', service_name='sugaring') }}">Шугаринг</a></li>
-                      <li><a class="dropdown-item" href="{{ url_for('services', service_name='haircut') }}">Стрижка</a></li>
-                      <li><a class="dropdown-item" href="{{ url_for('services', service_name='solarium') }}">Солярий</a></li>
+                      <li><a class="dropdown-item" href="{{ url_for('services', service_name='Ресницы и брови') }}">Брови</a></li>
+                      <li><a class="dropdown-item" href="{{ url_for('services', service_name='Ногтевой сервис') }}">Ногти</a></li>
+                      <li><a class="dropdown-item" href="{{ url_for('services', service_name='Окрашивание') }}">Окрашивание</a></li>
+                      <li><a class="dropdown-item" href="{{ url_for('services', service_name='Шугаринг') }}">Шугаринг</a></li>
+                      <li><a class="dropdown-item" href="{{ url_for('services', service_name='Стрижки') }}">Стрижка</a></li>
+                      <li><a class="dropdown-item" href="{{ url_for('services', service_name='Солярий') }}">Солярий</a></li>
                   </ul>
                 </li>
                 <li class="nav-item dropdown">
@@ -192,11 +192,11 @@
                     Мастера
                   </a>
                   <ul class="dropdown-menu dropdown-menu-dark">
-                      <li><a class="dropdown-item" href="{{ url_for('masters', masters_name='eyebrows') }}">Брови</a></li>
-                      <li><a class="dropdown-item" href="{{ url_for('masters', masters_name='nails') }}">Ногти</a></li>
-                      <li><a class="dropdown-item" href="{{ url_for('masters', masters_name='coloring') }}">Окрашивание</a></li>
-                      <li><a class="dropdown-item" href="{{ url_for('masters', masters_name='sugaring') }}">Шугаринг</a></li>
-                      <li><a class="dropdown-item" href="{{ url_for('masters', masters_name='haircut') }}">Стрижка</a></li>
+                      <li><a class="dropdown-item" href="{{ url_for('masters', service_name='Ресницы и брови') }}">Брови</a></li>
+                      <li><a class="dropdown-item" href="{{ url_for('masters', service_name='Ногтевой сервис') }}">Ногти</a></li>
+                      <li><a class="dropdown-item" href="{{ url_for('masters', service_name='Окрашивание') }}">Окрашивание</a></li>
+                      <li><a class="dropdown-item" href="{{ url_for('masters', service_name='Шугаринг') }}">Шугаринг</a></li>
+                      <li><a class="dropdown-item" href="{{ url_for('masters', service_name='Стрижки') }}">Стрижка</a></li>
                   </ul>
                 </li>
                 <li class="nav-item">
@@ -205,7 +205,11 @@
           </ul>
 
           <div class="d-lg-flex col-lg-3 justify-content-lg-end">
+            {% if csrf %}
+            <a class="btn btn-primary" href="{{ url_for('profile') }}">Личный Кабинет</a>
+            {% else %}
             <a class="btn btn-primary" href="{{ url_for('auth') }}">Войти</a>
+            {% endif %}
           </div>
 
         </div>
@@ -228,6 +232,7 @@
             <a href="/" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
               <svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>
             </a>
+            <input type="text" value="{{csrf}}" hidden="" name="csrf">
 
             <span class="mb-3 mb-md-0 text-body-secondary">© 2023 Po!nt, Inc</span>
           </div>

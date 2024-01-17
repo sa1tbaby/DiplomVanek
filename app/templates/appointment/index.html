@@ -45,7 +45,7 @@
 
                 <div class="col-sm-6">
                 <label for="firstName" class="form-label">Имя</label>
-                <input name="first_name" class="form-control" id="firstName" placeholder="" value="{{first_name}}" required>
+                <input name="first_name" class="form-control" id="firstName" placeholder="" value="{{static_content.first_name}}" required>
                 <div class="invalid-feedback">
                   Введите Имя
                 </div>
@@ -53,7 +53,7 @@
 
                 <div class="col-sm-6">
                     <label for="lastName" class="form-label">Фамилия</label>
-                    <input name="last_name" type="text" class="form-control" id="lastName" placeholder="" value="{{last_name}}" required>
+                    <input name="last_name" type="text" class="form-control" id="lastName" placeholder="" value="{{static_content.last_name}}" required>
                     <div class="invalid-feedback">
                       Введите Фамилию
                     </div>
@@ -61,7 +61,7 @@
 
                 <div class="col-sm-6">
                 <label for="email" class="form-label">Email <span class="text-body-secondary">(Optional)</span></label>
-                <input name="email_input" type="email" class="form-control" id="email" placeholder="you@example.com" value="{{email_input}}">
+                <input name="email_input" type="email" class="form-control" id="email" placeholder="you@example.com" value="{{static_content.email_input}}">
                 <div class="invalid-feedback">
                   Please enter a valid email address for shipping updates.
                 </div>
@@ -70,7 +70,7 @@
                 <div class="col-sm-6">
 
                     <label for="phone_number" class="form-label">Номер телефона</label>
-                    <input name="phone_input" type="number" class="form-control" id="phone_number" placeholder="+79991112233" value="{{phone_input}}">
+                    <input name="phone_input" type="number" class="form-control" id="phone_number" placeholder="+79991112233" value="{{static_content.phone_input}}">
                     <div class="invalid-feedback">
                         Пожалуйста введите номер телефона
                     </div>
@@ -82,9 +82,9 @@
 
                 <div class="col-sm-4">
                     <select name="service_type" class="form-select" required="" aria-label="select example">
-                        <option value=None >Выберите тип услуги</option>
-                        {% for item in services_list %}
-                            <option value="{{item}}">{{item}}</option>
+                        <option value="{{static_content.service_type}}" >{{static_content.service_type}}</option>
+                        {% for service in static_content.services_list %}
+                            <option value="{{service}}">{{service}}</option>
                         {% endfor %}
                     </select>
                     <div class="invalid-feedback">Example invalid select feedback</div>
@@ -93,49 +93,50 @@
 
                 <div class="col-sm-4">
 
-                  <input type="date" class="form-control" id="date-input" name="date_input" value="{{date}}">
+                  <input type="date" class="form-control" id="date-input" name="date_input" value="{{static_content.date_input}}">
 
                 </div>
-
+                <button name="button_method"
+                        value="check"
+                        class="w-100 btn btn-primary btn-lg"
+                        type="submit" >
+                    Проверить свободные записи
+                </button>
                 <div class="col-sm-2"></div>
+                <hr class="my-4">
+                {% for item_master in masters %}
+
+                <div class="col-lg-5">
+                      <div class="card shadow-sm">
+                        <img src="{{ url_for('static', filename=item_master.img) }}" alt="">
+                          <input name="master_id" value="{{item_master.item.id}}" type="text" hidden="">
+
+                        <div class="card-body">
+                            <select name="service_name" class="form-select" required="" aria-label="select example">
+                                    <option value="None">"Выберите услугу"</option>
+                                {% for services in item_master.services %}
+                                    <option value="{{services}}">{{services}}</option>
+                                {% endfor %}
+                            </select>
+                            <select name="available_time" class="form-select" required="" aria-label="select example">
+                                    <option value="None">"Выберите время"</option>
+                                {% for time in item_master.available_time %}
+                                    <option value={{time}}>{{time}}</option>
+                                {% endfor %}
+                            </select>
+                          <hr>
+                            <button name="button_method"
+                                    value="insert"
+                                    class="w-100 btn btn-primary btn-lg"
+                                    type="submit" >
+                                Записаться
+                            </button>
+                        </div>
+                      </div>
+                </div>
+                {% endfor %}
 
             </div>
-
-            {% for masters in masters_list %}
-                <hr class="my-4">
-                <div class="col-sm-6">
-                  <div class="card shadow-sm">
-
-                    <img src="{{ url_for('static', filename=masters.img) }}" alt="">
-
-                    <div class="card-body">
-                        <select name="service_name" class="form-select" required="" aria-label="select example">
-                                <option value="None">"Выберите услугу"</option>
-                            {% for services in masters.services %}
-                                <option value={{services.name}}>{{services.name}}</option>
-                            {% endfor %}
-                        </select>
-                        <select name="available_time" class="form-select" required="" aria-label="select example">
-                                <option value="None">"Выберите время"</option>
-                            {% for time in masters.available_time %}
-                                <option value={{time.time}}>{{time.time}}</option>
-                            {% endfor %}
-                        </select>
-                      <hr>
-                        <a class="btn btn-primary"
-                           href="{{ url_for('services', service_name='eyebrows') }}"
-                           role="button">Записаться</a>
-                    </div>
-                  </div>
-                </div>
-
-            {% endfor %}
-
-            <hr class="my-4">
-
-
-            <button class="w-100 btn btn-primary btn-lg" type="submit" id="date-submit">Проверить свободные записи</button>
-
             </form>
 
         </div>

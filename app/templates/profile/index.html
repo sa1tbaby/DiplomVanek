@@ -1,0 +1,174 @@
+{% extends "base.html" %}
+
+{% block head %}
+{% endblock head %}
+
+{% block main %}
+<section style="background-color: #eee;">
+  <div class="container py-5">
+    <div class="row">
+      <div class="col-lg-2">
+      </div>
+      <div class="col-lg-8">
+        <div class="card mb-4">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Имя</p>
+              </div>
+              <div class="col-sm-9">
+                <input
+                            class="text-dark form-control cell-unic"
+                            type="text"
+                            name="name"
+                            value="{{user.name}}"
+                    >
+              </div>
+            </div>
+            <hr>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Email</p>
+              </div>
+              <div class="col-sm-9">
+                                <input
+                            class="text-dark form-control cell-unic"
+                            type="text"
+                            name="email"
+                            value="{{user.email}}"
+                    >
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Пароль</p>
+              </div>
+              <div class="col-sm-9">
+                                <input
+                            class="text-dark form-control cell-unic"
+                            type="text"
+                            name="password"
+                            value="{{user.password}}"
+                    >
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Телефон</p>
+              </div>
+              <div class="col-sm-9">
+                                <input
+                            class="text-dark form-control cell-unic"
+                            type="text"
+                            name="phone_number"
+                            value="{{user.phone_number}}"
+                    >
+              </div>
+            </div>
+                          <hr>
+            <div class="row">
+              <div class="col-sm-9">
+
+              </div>
+
+              <div class="col-sm-3">
+                <form name="field-asd1" action="{{ url_for('auth') }}" method="POST">
+                  <button style="width: 100%;" name="button_method" type="submit" class="btn btn-primary" value="logout">Выйти</button>
+                  </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+
+          </div>
+          <div class="col-md-6">
+
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+              {% for item in static_content %}
+            {% if user_role == 'guest' %}
+            <table id="appointments" class="table table-bordered table-sm " style="height: 100%;">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Клиент</th>
+                        <th>Мастер</th>
+                        <th>Услуга</th>
+                        <th>Дата</th>
+                        <th>Доп информация</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <form name="field-asd1" action="{{ url_for('admin_appointments') }}" method="POST">
+                    <tr>
+                        <td>
+                            <input
+                                    class="text-dark form-control cell-unic-id"
+                                    type="text"
+                                    name="id"
+                                    value="{{item.id}}"
+                            >
+                        </td>
+                        <td>
+                            <input
+                                    class="text-dark form-control cell-unic"
+                                    type="text"
+                                    name="user_id"
+                                    value="{{user.name}}"
+                            >
+                        </td>
+                        <td>
+                            <input
+                                    class="text-dark form-control cell-unic"
+                                    type="text"
+                                    name="master_id"
+                                    value="{{item.master_id}}"
+                            >
+                            </td>
+                            <td>
+                              <input
+                                      class="text-dark form-control cell-unic"
+                                      type="text"
+                                      name="service_name"
+                                      value="{{item.service_name}}"
+                              >
+                            </td>
+                        <td>
+                            <input
+                                    class="text-dark form-control cell-unic"
+                                    type="datetime-local"
+                                    name="date_time"
+                                    value="{{item.date_time}}"
+                            >
+                        </td>
+                        <td>
+                            <input
+                                    class="text-dark form-control cell-unic"
+                                    type="text"
+                                    name="extra"
+                                    value="{{item.extra}}"
+                            >
+                        </td>
+                    </tr>
+                </form>
+                </tbody>
+            </table>
+            {% endif %}
+              {% endfor %}
+          </div>
+
+        </div>
+      </div>
+        <div class="col-lg-2">
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock main %}

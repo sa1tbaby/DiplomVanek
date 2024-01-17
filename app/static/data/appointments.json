@@ -91,7 +91,7 @@
     {
       "id": 12,
       "user_id": 10,
-      "master_id": null,
+      "master_id": 999,
       "service_name":"Стандарт",
       "date_time":"2024-01-10 12:00:00",
       "extra": null
@@ -99,7 +99,7 @@
     {
       "id": 13,
       "user_id": 1,
-      "master_id": null,
+      "master_id": 999,
       "service_name":"Премиум",
       "date_time":"2024-01-10 13:00:00",
       "extra": null

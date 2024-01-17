@@ -9,6 +9,7 @@
 {% endblock head_admin %}
 
 {% block admin %}
+    <h2>{{status}}</h2>
     <table id="users_insert" class="table table-bordered table-sm">
         <thead>
             <tr>
@@ -25,53 +26,47 @@
             <tr>
                 <td>
                     <input
-                            class="text-dark form-control disable"
+                            class="text-dark form-control cell-unic "
                             type="text"
                             name="name"
-                            style="border: none; background-color: white;"
                     >
                 </td>
                 <td>
                     <input
-                            class="text-dark form-control disable"
+                            class="text-dark form-control cell-unic"
                             type="text"
                             name="email"
-                            style="border: none; background-color: white;"
                     >
                 </td>
                 <td>
                     <input
-                            class="text-dark form-control disable"
+                            class="text-dark form-control cell-unic"
                             type="text"
                             name="password"
-                            style="border: none; background-color: white;"
                     >
                 </td>
                 <td>
                     <input
-                            class="text-dark form-control disable"
+                            class="text-dark form-control cell-unic"
                             type="text"
                             name="phone_number"
-                            style="border: none; background-color: white;"
                     >
                 </td>
                 <td>
                     <select name="user_role" class="form-select" required="" aria-label="select example">
-                        <option value=None ></option>
-                        {% for role in user_roles %}
-                            <option value="{{role}}">{{role}}</option>
-                        {% endfor %}
+                        <option value='' ></option>
+                        <option value="guest">guest</option>
+                        <option value="admin">admin</option>
                     </select>
                 </td>
                 <td>
                     <button name="button_method" type="submit" class="btn btn-primary" value="insert">Добавить</button>
                 </td>
-
             </tr>
-
-           </form>
+        </form>
         </tbody>
     </table>
+
     <hr>
     <table id="users-update-delete" class="table table-bordered table-sm " style="height: 100%;">
         <thead>
@@ -87,54 +82,56 @@
             </tr>
         </thead>
         <tbody>
-        {% for content in static_content.users %}
-        <form name="field-asd1" action="{{ url_for('admin_users') }}" method="POST">
+        {% for user in users %}
+
             <tr>
+                <form name="field-update" action="{{ url_for('admin_users') }}" method="POST">
                 <td >
-                    <a name="{{content.id}}">{{content.id}}</a>
-                </td>
-                <td>
                     <input
-                            class="text-dark form-control disable"
+                            class="text-dark form-control cell-unic-id"
                             type="text"
-                            name="{{content.name}}"
-                            style="border: none; background-color: white;"
-                            value="{{content.name}}"
+                            name="id"
+                            value="{{user.id}}"
+
                     >
                 </td>
                 <td>
                     <input
-                            class="text-dark form-control"
+                            class="text-dark form-control cell-unic"
                             type="text"
-                            name="{{content.email}}"
-                            style="border: none; background-color: white;"
-                            value="{{content.email}}"
+                            name="name"
+                            value="{{user.name}}"
                     >
                 </td>
                 <td>
                     <input
-                            class="text-dark form-control"
+                            class="text-dark form-control cell-unic"
+                            type="text"
+                            name="email"
+                            value="{{user.email}}"
+                    >
+                </td>
+                <td>
+                    <input
+                            class="text-dark form-control cell-unic"
                             type="password"
-                            name="{{content.password}}"
-                            style="border: none; background-color: white; width: auto;"
-                            value="{{content.password}}"
+                            name="password"
+                            value="{{user.password}}"
                     >
                 </td>
                 <td>
                     <input
-                            class="text-dark form-control"
+                            class="text-dark form-control cell-unic"
                             type="text"
-                            name="{{content.phone_number}}"
-                            style="border: none; background-color: white; width: auto;"
-                            value="{{content.phone_number}}"
+                            name="phone_number"
+                            value="{{user.phone_number}}"
                     >
                 </td>
                 <td>
                     <select name="user_role" class="form-select" required="" aria-label="select example">
-                        <option value='{{content.role}}'>{{content.role}}</option>
-                        {% for role in user_roles %}
-                            <option value="{{role}}">{{role}}</option>
-                        {% endfor %}
+                        <option value=role>{{user.role}}</option>
+                        <option value="guest">guest</option>
+                        <option value="admin">admin</option>
                     </select>
                 </td>
                 <td>
@@ -143,11 +140,9 @@
                 <td>
                     <button name="button_method" type="submit" class="btn btn-primary" value="delete">Удалить</button>
                 </td>
-            </tr>
         </form>
+            </tr>
         {% endfor %}
-
-
         </tbody>
     </table>
 {% endblock admin %}

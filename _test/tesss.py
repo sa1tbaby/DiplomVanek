@@ -86,11 +86,10 @@ def encoding():
 
 
 def ttt_a():
-    ss = '110110110110110110110110110110'
 
-    for i, j in ss:
-        print(i, j)
-
+    ddd = {}
+    ss = ddd.get('a')
+    print(ss)
 ttt_a()
 
 def create_bd():

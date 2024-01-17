@@ -8,22 +8,24 @@ from models.declarativeModels import (
 
 from app.handlers.alchemyManager import AlchemyManager
 
+
 class ContentMasters:
     @staticmethod
     def get(
             manager: AlchemyManager,
-            masters_name: str
+            service_name: str
     ) -> dict:
 
-        header = services_name_dict.get(masters_name)
-        page = f'services/{masters_name}'
-
+        header = service_name
+        page = f'services/{service_name}'
+        print(service_name)
         with Session(bind=manager.engine) as session:
 
-            masters_list = session.query(Masters).filter(Masters.type == masters_name)
+            masters_list = session.query(Masters).filter(Masters.type == service_name).all()
 
             masters_list = ContentMasters._type_filtering(masters_list)
 
+            print(masters_list)
             title = session.query(Content).filter(*[Content.type == ContentType.text,
                                                     Content.page == page])
 
@@ -34,13 +36,14 @@ class ContentMasters:
             }
 
         return static_content
+
+
     @staticmethod
     def _type_filtering(masters_list):
 
         tmp_list = list()
 
         for masters in masters_list:
-
             tmp_dict = dict()
 
             for content in masters.content_list:
@@ -52,3 +55,5 @@ class ContentMasters:
                     tmp_dict.update(text=content.extra)
 
             tmp_list.append(tmp_dict)
+
+        return tmp_list
