@@ -6,7 +6,7 @@ from app import app, manager
 from app.handlers.contentMasters import ContentMasters
 from app.handlers.contentServices import ContentServices
 from app.handlers.contentGeneral import ContentGeneral
-from app.handlers.contentAdmin import AdminOperations, AdminUsers, AdminAppointments
+from app.handlers.contentAdmin import AdminOperations, AdminUsers, AdminAppointments, AdminMasters
 from app.handlers.contentAuth import AuthLogin
 from app.handlers.contentAppointment import ContentAppointments
 from app.handlers.contentProfile import ContentProfile
@@ -53,6 +53,7 @@ def admin_users():
                 user_value.update(
                     id=str(request.form.get('id'))
                 )
+                print(user_value)
                 status = AdminUsers.update(manager, user_value)
 
             elif button_method == 'delete':
@@ -163,18 +164,38 @@ def admin_appointments():
 
 @app.route('/admin/masters', methods=['POST', 'GET'])
 def admin_masters():
-    method = request.args.get('button_method')
-    static_content = {}
-    match method:
 
-        case 'update':
-            pass
+    static_content = {
 
-        case 'insert':
-            pass
+    }
+    form_content = {
+        'button_method': request.args.get('button_method')
+    }
 
-        case 'delete':
-            pass
+
+    static_content.update(
+        masters=AdminMasters.get(manager)
+    )
+    if request.method == "POST":
+
+        form_content.update(
+            id=request.form.get('id'),
+            name=request.form.get('name'),
+            email=request.form.get('email'),
+            phone_number=request.form.get('phone_number'),
+            type=request.form.get('type'),
+            button_method=request.args.get('button_method')
+        )
+        match form_content.pop('button_method'):
+            case 'update':
+                result = AdminMasters.update(manager, form_content)
+
+            case 'insert':
+                pass
+
+            case 'delete':
+                result = AdminMasters.delete(manager, form_content.get('id'))
+
 
     return render_template('admin/masters.html', static_content=static_content, csrf=csrf)
 
@@ -255,19 +276,15 @@ def services():
     )
 
     return render_template('services/index.html',
-                           static_content=static_content, csrf=csrf)
+                           static_content=static_content, csrf=csrf, user_id=user_id, user_role=user_id)
 
 @app.route('/profile', methods=['get', 'post'])
 def profile():
 
-
     user = ContentProfile.get(manager, user_id)
     static_content = ContentProfile.get_app(manager, user_id)
-
     if user_role == 'admin':
         return redirect(url_for('admin'))
-
-
 
     return render_template('profile/index.html', csrf=csrf, user=user, static_content=static_content, user_id=user.id, user_role=user.role)
 
@@ -321,7 +338,10 @@ def appointment():
     )
     masters = {
     }
-    user_id = 999
+    user_id_s = user_id
+    if user_id == True:
+        user_id_s = 999
+
 
     if request.method == "POST":
 

@@ -79,16 +79,22 @@
         </thead>
         <tbody>
         {% for content in static_content.masters %}
-        <form name="field-asd1" action="{{ url_for('admin_users') }}" method="POST">
+        <form name="field-asd1" action="{{ url_for('admin_masters') }}" method="POST">
             <tr>
                 <td >
-                    <a name="{{content.id}}">{{content.id}}</a>
+                    <input
+                            class="text-dark form-control disable"
+                            type="text"
+                            name="id"
+                            style="border: none; background-color: white;"
+                            value="{{content.id}}"
+                    >
                 </td>
                 <td>
                     <input
                             class="text-dark form-control disable"
                             type="text"
-                            name="{{content.name}}"
+                            name="name"
                             style="border: none; background-color: white;"
                             value="{{content.name}}"
                     >
@@ -97,7 +103,7 @@
                     <input
                             class="text-dark form-control"
                             type="text"
-                            name="{{content.email}}"
+                            name="email"
                             style="border: none; background-color: white;"
                             value="{{content.email}}"
                     >
@@ -106,7 +112,7 @@
                     <input
                             class="text-dark form-control"
                             type="text"
-                            name="{{content.phone_number}}"
+                            name="phone_number"
                             style="border: none; background-color: white;"
                             value="{{content.phone_number}}"
                     >
@@ -115,7 +121,7 @@
                     <input
                             class="text-dark form-control"
                             type="text"
-                            name="{{content.type}}"
+                            name="type"
                             style="border: none; background-color: white; max-width: 100px; text-align: center;"
                             value="{{content.type}}"
                     >

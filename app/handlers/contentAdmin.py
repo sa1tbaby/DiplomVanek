@@ -273,3 +273,51 @@ class AdminAppointments:
 
         else:
             return 'Успшено'
+
+class AdminMasters:
+
+    @staticmethod
+    def get(
+            manager: AlchemyManager
+    ):
+
+        with Session(bind=manager.engine) as session:
+
+            masters = session.query(Masters).all()
+
+        return masters
+
+    @staticmethod
+    def update(
+            manager: AlchemyManager,
+            data
+    ):
+
+        with Session(bind=manager.engine) as session:
+
+            session.execute(update(Masters), [data])
+            session.commit()
+
+        return True
+
+    @staticmethod
+    def delete(
+            manager: AlchemyManager,
+            id
+    ):
+        try:
+
+            if id == '' or False:
+                raise
+
+            stmt = delete(Masters).where(Masters.id == int(id))
+
+            with Session(bind=manager.engine) as session:
+
+                session.execute(stmt)
+                session.commit()
+        except:
+            return "Введите корректные данные"
+
+        else:
+            return 'Успшено'

@@ -92,7 +92,7 @@
         </div>
         <div class="row">
           <div class="col-md-12">
-              {% for item in static_content %}
+
             {% if user_role == 'guest' %}
             <table id="appointments" class="table table-bordered table-sm " style="height: 100%;">
                 <thead>
@@ -106,6 +106,7 @@
                     </tr>
                 </thead>
                 <tbody>
+                {% for item in static_content %}
                 <form name="field-asd1" action="{{ url_for('admin_appointments') }}" method="POST">
                     <tr>
                         <td>
@@ -158,10 +159,11 @@
                         </td>
                     </tr>
                 </form>
+                {% endfor %}
                 </tbody>
             </table>
             {% endif %}
-              {% endfor %}
+
           </div>
 
         </div>

@@ -3,7 +3,7 @@
   "driver": "psycopg2",
   "username": "admin",
   "password": "admin",
-  "host": "192.168.1.28",
+  "host": "192.168.1.4",
   "port": "5432",
   "database": "appdb",
   "engine_echo": true,
