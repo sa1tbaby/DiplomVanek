@@ -3,9 +3,6 @@
   <head>
 
     <script src="{{ url_for('static', filename='js/color-modes.js') }}"></script>
-    <script>
-      const Non = null;
-    </script>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -179,12 +176,12 @@
                     Услуги
                   </a>
                   <ul class="dropdown-menu dropdown-menu-dark">
-                      <li><a class="dropdown-item" href="{{ url_for('services', service_name='Ресницы и брови') }}">Брови</a></li>
-                      <li><a class="dropdown-item" href="{{ url_for('services', service_name='Ногтевой сервис') }}">Ногти</a></li>
-                      <li><a class="dropdown-item" href="{{ url_for('services', service_name='Окрашивание') }}">Окрашивание</a></li>
-                      <li><a class="dropdown-item" href="{{ url_for('services', service_name='Шугаринг') }}">Шугаринг</a></li>
-                      <li><a class="dropdown-item" href="{{ url_for('services', service_name='Стрижки') }}">Стрижка</a></li>
-                      <li><a class="dropdown-item" href="{{ url_for('services', service_name='Солярий') }}">Солярий</a></li>
+                      <li><a class="dropdown-item" href="{{ url_for('services', service_id=1) }}">Брови</a></li>
+                      <li><a class="dropdown-item" href="{{ url_for('services', service_id=2) }}">Ногти</a></li>
+                      <li><a class="dropdown-item" href="{{ url_for('services', service_id=3) }}">Окрашивание</a></li>
+                      <li><a class="dropdown-item" href="{{ url_for('services', service_id=4) }}">Шугаринг</a></li>
+                      <li><a class="dropdown-item" href="{{ url_for('services', service_id=5) }}">Стрижка</a></li>
+                      <li><a class="dropdown-item" href="{{ url_for('services', service_id=6) }}">Солярий</a></li>
                   </ul>
                 </li>
                 <li class="nav-item dropdown">
@@ -192,15 +189,21 @@
                     Мастера
                   </a>
                   <ul class="dropdown-menu dropdown-menu-dark">
-                      <li><a class="dropdown-item" href="{{ url_for('masters', service_name='Ресницы и брови') }}">Брови</a></li>
-                      <li><a class="dropdown-item" href="{{ url_for('masters', service_name='Ногтевой сервис') }}">Ногти</a></li>
-                      <li><a class="dropdown-item" href="{{ url_for('masters', service_name='Окрашивание') }}">Окрашивание</a></li>
-                      <li><a class="dropdown-item" href="{{ url_for('masters', service_name='Шугаринг') }}">Шугаринг</a></li>
-                      <li><a class="dropdown-item" href="{{ url_for('masters', service_name='Стрижки') }}">Стрижка</a></li>
+                      <li><a class="dropdown-item" href="{{ url_for('services', service_id=1) }}">Брови</a></li>
+                      <li><a class="dropdown-item" href="{{ url_for('services', service_id=2) }}">Ногти</a></li>
+                      <li><a class="dropdown-item" href="{{ url_for('services', service_id=3) }}">Окрашивание</a></li>
+                      <li><a class="dropdown-item" href="{{ url_for('services', service_id=4) }}">Шугаринг</a></li>
+                      <li><a class="dropdown-item" href="{{ url_for('services', service_id=5) }}">Стрижка</a></li>
                   </ul>
                 </li>
-                <li class="nav-item">
-                  <a class="btn nav-link nav-panel" href="{{ url_for('appointment') }}">Записаться</a>
+                <li class="nav-item dropdown">
+                  <a class="btn dropdown-toggle nav-link nav-panel" data-bs-toggle="dropdown" aria-expanded="false">
+                    Записаться
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-dark">
+                      <li><a class="dropdown-item" href="{{ url_for('appointment', step=1) }}">Выбор по мастеру</a></li>
+                      <li><a class="dropdown-item" href="{{ url_for('appointment', step=1) }}">Выбор по сервису</a></li>
+                  </ul>
                 </li>
           </ul>
 
@@ -211,14 +214,12 @@
         </div>
       </nav>
     </header>
+
     <main class="mainnn">
     {% block main %}
 
-
-
     {% endblock main %}
     </main>
-
 
       <footer class="align-items-center py-3 my-4 border-top">
         <div class="d-flex flex-wrap container justify-content-between">
@@ -228,7 +229,6 @@
             <a href="/" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
               <svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>
             </a>
-            <input type="text" value="{{csrf}}" hidden="" name="csrf">
 
             <span class="mb-3 mb-md-0 text-body-secondary">© 2023 Po!nt, Inc</span>
           </div>
