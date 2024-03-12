@@ -2,6 +2,7 @@ from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
+
 @app.route('/')
 def main():
 
@@ -13,6 +14,7 @@ def main():
 
     return render_template('ui/main.html', static_content=static_content)
 
+
 @app.route('/services')
 def services():
 
@@ -23,6 +25,7 @@ def services():
     }
 
     return render_template('ui/services.html', static_content=static_content)
+
 
 @app.route('/masters')
 def masters():
