@@ -1,14 +1,27 @@
+from sqlalchemy import Table
+from sqlalchemy import Column
+from sqlalchemy import ForeignKey
 from sqlalchemy.orm import Mapped
 from sqlalchemy.orm import relationship
-from sqlalchemy.dialects.postgresql import UUID
-from base_model import BaseBd, uuid_pk, role_enum, int_pk, services_enum, date_time, opt_str
 from sqlalchemy.orm import mapped_column
+from sqlalchemy.dialects.postgresql import UUID
+
 from typing import List
-from sqlalchemy import ForeignKey
+from base_model import (BaseBd,
+                        uuid_pk, int_pk, opt_str, date_time,
+                        media_enum, role_enum, services_enum)
+
+
+masters_service = Table(
+    'masters_services_associate',
+    BaseBd.metadata,
+    Column('masters_id', ForeignKey('masters.id'), primary_key=True),
+    Column('services_id', ForeignKey('services.id'), primary_key=True)
+)
 
 
 class Users(BaseBd):
-    __tablename__ = "users"
+    __tablename__ = 'users'
     id: Mapped[uuid_pk]
     first_name: Mapped[str]
     second_name: Mapped[str]
@@ -21,31 +34,33 @@ class Users(BaseBd):
 
 
 class Services(BaseBd):
-    __tablename__ = "services"
+    __tablename__ = 'services'
     id: Mapped[int_pk]
     service_name: Mapped[str]
     service_type: Mapped[services_enum]
     type_cost: Mapped[int]
     masters_id: Mapped
 
+    masters_list: Mapped[List['Masters']] = relationship(secondary=masters_service, back_populates='services_list')
     appointments_list: Mapped[List['Appointments']] = relationship()
 
 
 class Masters(BaseBd):
-    __tablename__ = "masters"
+    __tablename__ = 'masters'
     id: Mapped[uuid_pk]
     first_name: Mapped[str]
     second_name: Mapped[str]
     email: Mapped[str]
     phone_number: Mapped[str]
     work_schedule: Mapped[bytes]
-    service_type: Mapped
+    service_id: Mapped
 
+    services_list: Mapped[List['Services']] = relationship(secondary=masters_service, back_populates='masters_list')
     appointments_list: Mapped[List['Appointments']] = relationship()
 
 
 class Appointments(BaseBd):
-    __tablename__ = "appointments"
+    __tablename__ = 'appointments'
     id: Mapped[uuid_pk]
     user_id: Mapped[UUID] = mapped_column(ForeignKey('users.id'))
     master_id: Mapped[UUID] = mapped_column(ForeignKey('masters.id'))
@@ -54,5 +69,11 @@ class Appointments(BaseBd):
     extra: Mapped[opt_str]
 
 
-class Content(BaseBd):
-    pass
+class Media(BaseBd):
+    __tablename__ = 'media'
+    id: Mapped[uuid_pk]
+    page: Mapped[str]
+    link: Mapped[str]
+    type: Mapped[media_enum]
+    content: Mapped[opt_str]
+
