@@ -1,7 +1,4 @@
-import json
-import os.path
+from configuration.init_db import init_db
 
-from configuration.init_db import InitDb
-from src.config import Settings
-
-InitDb(settings=Settings()).init()
+if __name__ == '__main__':
+    init_db.create()

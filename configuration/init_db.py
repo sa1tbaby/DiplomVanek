@@ -1,8 +1,10 @@
 import json
+from src.config import Settings
 from src.database.base import AlchemyBase
 from src.database.models.declarative_models import *
 from sqlalchemy import insert
 import os.path
+
 
 class InitDb(AlchemyBase):
 
@@ -17,7 +19,7 @@ class InitDb(AlchemyBase):
         Users
     ]
 
-    def init(self):
+    def create(self):
         BaseBd.metadata.create_all(self.engine)
 
         with self.session_factory() as session:
@@ -38,5 +40,7 @@ class InitDb(AlchemyBase):
 
     def drop(self):
         BaseBd.metadata.drop_all(self.engine)
+
+init_db = InitDb(settings=Settings())
 
 
