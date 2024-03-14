@@ -1,3 +1,5 @@
+from typing import List
+
 from sqlalchemy import Table
 from sqlalchemy import Column
 from sqlalchemy import ForeignKey
@@ -6,11 +8,11 @@ from sqlalchemy.orm import relationship
 from sqlalchemy.orm import mapped_column
 from sqlalchemy.dialects.postgresql import UUID
 
-from typing import List
-from base_model import (BaseBd,
-                        uuid_pk, int_pk, opt_str, date_time,
-                        media_enum, role_enum, services_enum)
-
+from src.database.models.base_model import (
+    BaseBd,
+    uuid_pk, int_pk, opt_str, date_time,
+    media_enum, role_enum, services_enum
+)
 
 masters_service = Table(
     'masters_services_associate',
@@ -39,7 +41,6 @@ class Services(BaseBd):
     service_name: Mapped[str]
     service_type: Mapped[services_enum]
     type_cost: Mapped[int]
-    masters_id: Mapped
 
     masters_list: Mapped[List['Masters']] = relationship(secondary=masters_service, back_populates='services_list')
     appointments_list: Mapped[List['Appointments']] = relationship()
@@ -52,8 +53,7 @@ class Masters(BaseBd):
     second_name: Mapped[str]
     email: Mapped[str]
     phone_number: Mapped[str]
-    work_schedule: Mapped[bytes]
-    service_id: Mapped
+    work_schedule: Mapped[str]
 
     services_list: Mapped[List['Services']] = relationship(secondary=masters_service, back_populates='masters_list')
     appointments_list: Mapped[List['Appointments']] = relationship()
@@ -74,6 +74,8 @@ class Media(BaseBd):
     id: Mapped[uuid_pk]
     page: Mapped[str]
     link: Mapped[str]
-    type: Mapped[media_enum]
+    media_type: Mapped[media_enum]
     content: Mapped[opt_str]
+
+
 

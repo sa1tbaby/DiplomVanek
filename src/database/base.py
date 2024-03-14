@@ -10,8 +10,7 @@ class AlchemyBase:
         self.engine = create_engine(
             url=settings.get_url_psycopg,
             echo=settings.DB_ECHO,
-            echo_pool=settings.DB_ECHO_POOL,
-            logging_name=getLogger(self.__name__)
+            logging_name=getLogger(AlchemyBase.__name__)
         )
 
         self.session_factory = sessionmaker(

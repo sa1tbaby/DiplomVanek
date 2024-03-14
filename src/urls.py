@@ -1,12 +1,8 @@
-from logging import basicConfig, getLogger
-
 from flask import Flask, render_template, request
-from src.configs.config import Settings, LogSettings
-from sqlalchemy.orm import sessionmaker
+from logging import basicConfig
+from src.config import Settings
+from src.config import LogSettings
 
-app = Flask(__name__)
-
-settings = Settings()
 log_settings = LogSettings()
 
 basicConfig(
@@ -16,8 +12,9 @@ basicConfig(
     format=log_settings.LOG_FORMAT
 )
 
+settings = Settings()
 
-
+app = Flask(__name__)
 
 @app.route('/')
 def main():

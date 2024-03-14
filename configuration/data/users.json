@@ -1,0 +1,92 @@
+{
+  "data": [
+    {
+      "first_name": "Анна",
+      "second_name": "Иванова",
+      "password": "master",
+      "email": "anna_example@gmail.ru",
+      "phone_number": "+79261234567",
+      "role": "USER"
+    },
+    {
+      "first_name": "Сергей",
+      "second_name": "Петров",
+      "password": "master",
+      "email": "petr_example@gmail.ru",
+      "phone_number": "+79181234567",
+      "role": "USER"
+    },
+    {
+      "first_name": "Екатерина",
+      "second_name": "Смирнова",
+      "password": "master",
+      "email": "kate_example@gmail.ru",
+      "phone_number": "+79031234567",
+      "role": "USER"
+    },
+    {
+      "first_name": "Дмитрий",
+      "second_name": "Кузнецов",
+      "password": "master",
+      "email": "dima_example@gmail.ru",
+      "phone_number": "+79341234567",
+      "role": "USER"
+    },
+    {
+      "first_name": "Ольга",
+      "second_name": "Васильева",
+      "password": "master",
+      "email": "olga_example@gmail.ru",
+      "phone_number": "+79551234567",
+      "role": "USER"
+    },
+    {
+      "first_name": "Александр",
+      "second_name": "Попов",
+      "password": "master",
+      "email": "aleks_example@gmail.ru",
+      "phone_number": "+79661234567",
+      "role": "USER"
+    },
+    {
+      "first_name": "Елена",
+      "second_name": "Соколова",
+      "password": "master",
+      "email": "helena_example@gmail.ru",
+      "phone_number": "+79771234567",
+      "role": "USER"
+    },
+    {
+      "first_name": "Игорь",
+      "second_name": "Михайлов",
+      "password": "master",
+      "email": "igor_example@gmail.ru",
+      "phone_number": "+79881234567",
+      "role": "USER"
+    },
+    {
+      "first_name": "Татьяна",
+      "second_name": "Новикова",
+      "password": "master",
+      "email": "tati2_example@gmail.ru",
+      "phone_number": "+79991234567",
+      "role": "USER"
+    },
+    {
+      "first_name": "Андрей",
+      "second_name": "Федоров",
+      "password": "master",
+      "email": "andrey_example@gmail.ru",
+      "phone_number": "+79901234567",
+      "role": "USER"
+    },
+    {
+      "first_name": "Иван",
+      "second_name": "Иванов",
+      "password": "master",
+      "email": "admin@gmail.ru",
+      "phone_number": "+79992223341",
+      "role": "ADMIN"
+    }
+  ]
+}
