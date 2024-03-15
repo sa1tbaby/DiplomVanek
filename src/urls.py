@@ -16,8 +16,11 @@ settings = Settings()
 
 app = Flask(__name__)
 
-@app.route('/')
+
+@app.route('/main')
 def main():
+
+    efaf = request.base_url[len(request.host_url):]
 
     static_content = {
         'carousel': [],
@@ -30,6 +33,9 @@ def main():
 
 @app.route('/services')
 def services():
+
+    efaf = request.base_url[len(request.host_url):]
+
 
     static_content = {
         'header': '',
@@ -85,6 +91,20 @@ def appointment(step: int):
                 }
 
                 return render_template('ui/appointment/step1.html', static_content=static_content)
+
+
+@app.route('/auth', methods=['get', 'post'])
+def auth():
+    pass
+
+
+@app.route('/admin/<point>', methods=['get', 'post'])
+def admin(point):
+    if request.method == 'get':
+        static_content = ''
+
+
+    return render_template(f'admin/{point}.html')
 
 
 @app.route('/base')

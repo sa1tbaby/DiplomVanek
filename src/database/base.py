@@ -1,6 +1,6 @@
+from logging import getLogger
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from logging import getLogger
 
 
 class AlchemyBase:

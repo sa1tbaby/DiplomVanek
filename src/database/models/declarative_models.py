@@ -1,5 +1,4 @@
 from typing import List
-
 from sqlalchemy import Table
 from sqlalchemy import Column
 from sqlalchemy import ForeignKey
@@ -8,10 +7,10 @@ from sqlalchemy.orm import relationship
 from sqlalchemy.orm import mapped_column
 from sqlalchemy.dialects.postgresql import UUID
 
-from src.database.models.base_model import (
+from src.database.models.base_models import (
     BaseBd,
     uuid_pk, int_pk, opt_str, date_time,
-    media_enum, role_enum, services_enum
+    media_type_enum, media_page_enum, role_enum, services_enum
 )
 
 masters_service = Table(
@@ -72,9 +71,9 @@ class Appointments(BaseBd):
 class Media(BaseBd):
     __tablename__ = 'media'
     id: Mapped[uuid_pk]
-    page: Mapped[str]
-    link: Mapped[str]
-    media_type: Mapped[media_enum]
+    page: Mapped[media_page_enum]
+    keys: Mapped[str]
+    media_type: Mapped[media_type_enum]
     content: Mapped[opt_str]
 
 

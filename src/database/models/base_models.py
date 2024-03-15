@@ -1,9 +1,10 @@
+from enum import Enum
+from uuid import uuid4
+from typing import Annotated
 from sqlalchemy.orm import mapped_column
 from sqlalchemy.orm import DeclarativeBase
-from sqlalchemy.dialects.postgresql import UUID, ENUM as PG_ENUM
-from enum import Enum
-from typing import Annotated
-from uuid import uuid4
+from sqlalchemy.dialects.postgresql import UUID
+from sqlalchemy.dialects.postgresql import ENUM as PG_ENUM
 
 
 class RolesEnum(Enum):
@@ -25,14 +26,42 @@ class MediaTypeEnum(Enum):
     IMAGE = 'img'
 
 
+class MediaPagesEnum(Enum):
+    MAIN = 'main'
+    SERVICES = 'services'
+    MASTERS = 'masters'
+    APPOINTMENT = 'appointment'
+    ADMIN = 'admin'
+    PERSON = 'person'
+
+
 uuid_pk = Annotated[
     UUID,
     mapped_column(UUID(as_uuid=True), primary_key=True, default=uuid4)
 ]
-media_enum = Annotated[
+int_pk = Annotated[
+    int,
+    mapped_column(primary_key=True)
+]
+date_time = Annotated[
+    float,
+    mapped_column(nullable=False)
+]
+opt_str = Annotated[
+    str,
+    mapped_column(nullable=True)
+]
+media_type_enum = Annotated[
     Enum,
     mapped_column(
-        PG_ENUM(MediaTypeEnum, name='media_enum', create_type=True),
+        PG_ENUM(MediaTypeEnum, name='media_type_enum', create_type=True),
+        nullable=False
+    )
+]
+media_page_enum = Annotated[
+    Enum,
+    mapped_column(
+        PG_ENUM(MediaPagesEnum, name='media_page_enum', create_type=True),
         nullable=False
     )
 ]
@@ -50,18 +79,7 @@ role_enum = Annotated[
         nullable=False
     )
 ]
-int_pk = Annotated[
-    int,
-    mapped_column(primary_key=True)
-]
-date_time = Annotated[
-    float,
-    mapped_column(nullable=False)
-]
-opt_str = Annotated[
-    str,
-    mapped_column(nullable=True)
-]
+
 
 class BaseBd(DeclarativeBase):
     pass
