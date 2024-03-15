@@ -2,6 +2,9 @@ from flask import Flask, render_template, request
 from logging import basicConfig
 from src.config import Settings
 from src.config import LogSettings
+from src.database.page_handles import AdminContent
+
+settings = Settings()
 
 log_settings = LogSettings()
 
@@ -12,10 +15,9 @@ basicConfig(
     format=log_settings.LOG_FORMAT
 )
 
-settings = Settings()
-
 app = Flask(__name__)
 
+admin_content = AdminContent(settings)
 
 @app.route('/main')
 def main():
@@ -100,11 +102,10 @@ def auth():
 
 @app.route('/admin/<point>', methods=['get', 'post'])
 def admin(point):
-    if request.method == 'get':
-        static_content = ''
 
+    static_content = admin_content.get(point)
 
-    return render_template(f'admin/{point}.html')
+    return render_template(f'admin/{point}.html', static_content=static_content)
 
 
 @app.route('/base')
@@ -116,4 +117,4 @@ def base():
         'information_block': []
     }
 
-    return render_template('base.html')
+    return render_template('admin/admin_base.html')

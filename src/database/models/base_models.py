@@ -34,7 +34,6 @@ class MediaPagesEnum(Enum):
     ADMIN = 'admin'
     PERSON = 'person'
 
-
 uuid_pk = Annotated[
     UUID,
     mapped_column(UUID(as_uuid=True), primary_key=True, default=uuid4)

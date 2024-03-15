@@ -37,3 +37,5 @@ class LogSettings(BaseSettings):
     LOG_LEVEL: int = 10
     LOG_FORMAT: str = "%(asctime)s %(levelname)s :- %(message)s"
 
+
+

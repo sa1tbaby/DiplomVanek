@@ -7,11 +7,13 @@ from sqlalchemy.orm import relationship
 from sqlalchemy.orm import mapped_column
 from sqlalchemy.dialects.postgresql import UUID
 
+
 from src.database.models.base_models import (
     BaseBd,
     uuid_pk, int_pk, opt_str, date_time,
     media_type_enum, media_page_enum, role_enum, services_enum
 )
+
 
 masters_service = Table(
     'masters_services_associate',
@@ -32,7 +34,6 @@ class Users(BaseBd):
     role: Mapped[role_enum]
 
     appointments_list: Mapped[List['Appointments']] = relationship()
-
 
 class Services(BaseBd):
     __tablename__ = 'services'
@@ -77,4 +78,10 @@ class Media(BaseBd):
     content: Mapped[opt_str]
 
 
-
+TABLES_DICT = {
+    'users': Users,
+    'services': Services,
+    'masters': Masters,
+    'appointments': Appointments,
+    'media': Media
+}

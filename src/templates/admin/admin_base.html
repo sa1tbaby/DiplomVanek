@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block style %}
+    table {
+       border: 1px solid grey;
+        align: center;
+    }
+    /* границы ячеек первого ряда таблицы */
+    th {
+       border: 1px solid grey;
+    }
+    /* границы ячеек тела таблицы */
+    td {
+       border: 1px solid grey;
+    }
+    .admin_content{
+      float: left;
+      width: 80%;
+      padding: 2% 5% 2% 5%;
+    }
+    .admin_menu{
+      float: left;
+      width: 10%;
+    }
+    .admin_nav {
+      background: #BEF1ED;
+      display: block;
+      text-align: center;
+      height: 100vh;
+    }
+
+    .admin_menu ul {
+      list-style: none;
+      padding: 0;
+    }
+    .admin_menu ul li a {
+      color: #222;
+      text-decoration: none;
+      text-transform: none;
+      text-transform: uppercase;
+      font-weight: bold;
+      padding: 10px;
+      display: block;
+    }
+{% endblock style %}
+
+{% block main %}
+    <div class='admin_menu'>
+      <nav class="admin_nav">
+      <ul>
+        <li><a href="{{ url_for('admin', point='users') }}">Пользователи</a></li>
+        <li><a href="{{ url_for('admin', point='masters') }}">Мастера</a></li>
+        <li><a href="{{ url_for('admin', point='services') }}">Услуги</a></li>
+        <li><a href="{{ url_for('admin', point='appointments') }}">Заказы</a></li>
+        <li><a href="{{ url_for('admin', point='media') }}">Контент сайта</a></li>
+      </ul>
+      </nav>
+    </div>
+    <div class='admin_content'>
+        {% block admin_content %}
+        {% endblock admin_content %}
+    </div>
+{% endblock main %}

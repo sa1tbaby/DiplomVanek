@@ -44,3 +44,5 @@ class InitDb(AlchemyBase):
 init_db = InitDb(settings=Settings())
 
 
+asd = Masters()
+asd.registry.mapped()

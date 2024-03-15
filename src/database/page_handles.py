@@ -1,5 +1,5 @@
 from src.database.base import AlchemyBase
-from src.database.models.declarative_models import Media
+from src.database.models.declarative_models import Media, Services, Masters, Appointments, Users, TABLES_DICT
 from sqlalchemy import select
 from flask import request
 import uuid
@@ -15,4 +15,9 @@ class UiContent(AlchemyBase):
 
 class AdminContent(AlchemyBase):
 
-    def get(self):
+    def get(self, point):
+        with self.session_factory() as session:
+            result = session.scalars(
+                select(TABLES_DICT.get(point))
+            ).all()
+        return result

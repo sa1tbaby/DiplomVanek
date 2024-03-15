@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block main %}
+    <div class="" >
+            <div id="carouselFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img src="{{ url_for('static', filename=static_content.carousel_active) }}" class="d-block w-100 container-img" alt="...">
+                </div>
+                {% for carousel_item in static_content.carousel %}
+                  <div class="carousel-item">
+                    <img src="{{ url_for('static', filename=carousel_item) }}" class="d-block w-100 container-img" alt="...">
+                  </div>
+                {% endfor %}
+              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#carouselFade" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carouselFade" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+          </div>
+    {% for block in static_content.information_block %}
+        <div class="container text-center">
+            <hr>
+            <h1 class="display-5 fw-bold text-body-emphasis">Немного о нас</h1>
+            <div class="col-lg-6 mx-auto">
+                <p class="lead mb-4">{{block}}</p>
+            </div>
+            <br>
+        </div>
+    {% endfor %}
+    <div class="container text-center">
+        <script class="gis" type="text/javascript"  charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A22d44f2c0ec01f789284f8dcd03f62e006bc98726f2b161d800eb2f696a037b0&amp;width=100%&amp;height=500px&amp;lang=ru_RU&amp;scroll=true"></script>
+    </div>
+{% endblock main %}
