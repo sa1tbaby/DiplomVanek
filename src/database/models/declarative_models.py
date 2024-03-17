@@ -40,7 +40,7 @@ class Services(BaseBd):
     id: Mapped[int_pk]
     service_name: Mapped[str]
     service_type: Mapped[services_enum]
-    type_cost: Mapped[int]
+    cost: Mapped[int]
 
     masters_list: Mapped[List['Masters']] = relationship(secondary=masters_service, back_populates='services_list')
     appointments_list: Mapped[List['Appointments']] = relationship()
@@ -73,7 +73,7 @@ class Media(BaseBd):
     __tablename__ = 'media'
     id: Mapped[uuid_pk]
     page: Mapped[media_page_enum]
-    keys: Mapped[str]
+    media_endpoint: Mapped[str]
     media_type: Mapped[media_type_enum]
     content: Mapped[opt_str]
 

@@ -16,19 +16,19 @@
         <form name="form-masters" action="{{ url_for('admin', point='services') }}" method="POST">
             <tr>
                 <th>
-                    <input type="text" value={{content.id}}>
+                    <input name="id" type="text" value={{content.id}}>
                 </th>
                 <th>
-                    <input type="text" value={{content.service_type}}>
+                    <input name="service_type" type="text" value={{content.service_type}}>
                 </th>
                 <th>
-                    <input type="text" value={{content.service_name}}>
+                    <input name="service_name" type="text" value={{content.service_name}}>
                 </th>
                 <th>
-                    <input type="text" value={{content.type_cost}}>
+                    <input name="cost" type="text" value={{content.cost}}>
                 </th>
                 <th>
-                    <button value="update" type="submit">
+                    <button name="id" value={{content.id}} type="submit">
                         Обновить
                     </button>
                 </th>

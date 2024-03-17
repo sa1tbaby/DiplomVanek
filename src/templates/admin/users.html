@@ -7,9 +7,9 @@
             <th>Имя</th>
             <th>Фамилия</th>
             <th>Email</th>
-            <th>Номер</th>
-            <th>Обновление</th>
-            <th>График</th>
+            <th>Телефон</th>
+            <th>Пароль</th>
+            <th>Обновить</th>
         </tr>
     </thead>
     <tbody>
@@ -17,26 +17,26 @@
         <form name="form-masters" action="{{ url_for('admin', point='masters') }}" method="POST">
             <tr>
                 <th>
-                    <input type="text" value={{content.first_name}}>
+                    <input name="first_name" type="text" value={{content.first_name}}>
                 </th>
                 <th>
-                    <input type="text" value={{content.second_name}}>
+                    <input name="second_name" type="text" value={{content.second_name}}>
                 </th>
                 <th>
-                    <input type="text" value={{content.email}}>
+                    <input name="email" type="text" value={{content.email}}>
                 </th>
                 <th>
-                    <input type="text" value={{content.phone_number}}>
+                    <input name="phone_number" type="text" value={{content.phone_number}}>
                 </th>
                 <th>
-                    <button value="update" type="submit">
+                    <a name="password" href="{{ url_for('admin', point='masters') }}" class="button">
+                        Сменить
+                    </a>
+                </th>
+                <th>
+                    <button name="id" value={{content.id}} type="submit">
                         Обновить
                     </button>
-                </th>
-                <th>
-                    <a href="{{ url_for('admin', point='masters') }}" class="button">
-                        Click
-                    </a>
                 </th>
             </tr>
         </form>

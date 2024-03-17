@@ -1,10 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "admin/admin_base.html" %}
 
-</body>
-</html>
+{% block admin_content %}
+<table>
+    <thead>
+        <tr>
+            <th>Страница</th>
+            <th>Endpoint контента</th>
+            <th>Тип контента</th>
+            <th>Контент</th>
+            <th>Обновить</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for content in static_content %}
+        <form name="form-masters" action="{{ url_for('admin', point='masters') }}" method="POST">
+            <tr>
+                <th>
+                    <input name="page" type="text" value={{content.page}}>
+                </th>
+                <th>
+                    <input name="media_endpoint" type="text" value={{content.media_endpoint}}>
+                </th>
+                <th>
+                    <input name="media_type" type="text" value={{content.media_type}}>
+                </th>
+                <th>
+                    <input name="content" type="text" value={{content.content}}>
+                </th>
+                <th>
+                    <button name="id" value={{content.id}} type="submit">
+                        Обновить
+                    </button>
+                </th>
+            </tr>
+        </form>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock admin_content %}
