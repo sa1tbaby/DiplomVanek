@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, session, redirect, url_for
 from logging import basicConfig
 from src.config import Settings
 from src.config import LogSettings
-from src.database.page_handles import AdminContent, UiContent
+from src.database.page_handles import AdminContent, UiContent, AlchemyFactory
 
 settings = Settings()
 
@@ -17,11 +17,11 @@ basicConfig(
 
 app = Flask(__name__)
 
-admin_content = AdminContent(settings)
-ui_content = UiContent(settings)
+alchemy_factory = AlchemyFactory(settings)
 
 @app.route('/main')
 def main():
+    ui_content = alchemy_factory.get('UiContent')
     page_anchor = ['carousel', 'carousel_active', 'information_block']
 
     ui_content.get('asdd')
@@ -37,6 +37,7 @@ def main():
 
 @app.route('/services')
 def services():
+    ui_content = alchemy_factory.get('UiContent')
     page_anchor = ['header', 'information', 'services_list']
     efaf = request.base_url[len(request.host_url):]
 
@@ -52,6 +53,7 @@ def services():
 
 @app.route('/masters')
 def masters():
+    ui_content = alchemy_factory.get('UiContent')
     page_anchor = ['header', 'information', 'masters_list']
 
     static_content = {
@@ -65,6 +67,7 @@ def masters():
 
 @app.route('/appointment/<int:step>', methods=['get', 'post'])
 def appointment(step: int):
+    ui_content = alchemy_factory.get('UiContent')
     page_anchor = ['services_list']
 
     if request.method == 'GET':
@@ -105,7 +108,8 @@ def auth():
 
 
 @app.route('/admin/<point>', methods=['GET', 'POST'])
-def admin(point):
+def admin(point: str):
+    admin_content: AdminContent = alchemy_factory.get('AdminContent')
 
     match request.args.get('option'):
         case 'update':

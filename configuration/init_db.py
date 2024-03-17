@@ -1,12 +1,12 @@
 import json
 from src.config import Settings
-from src.database.base import AlchemyBase
+from src.database.base import AlchemyFactory
 from src.database.models.declarative_models import *
 from sqlalchemy import insert
 import os.path
 
 
-class InitDb(AlchemyBase):
+class InitDb(AlchemyFactory):
 
     data = [
         'masters.json',
