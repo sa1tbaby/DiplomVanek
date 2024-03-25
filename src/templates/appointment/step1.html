@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block style %}
+{% endblock style %}
+
+{% block main %}
+<div class="container">
+    <div class="row g-5">
+        <div class="col-md-3 col-lg-2"></div>
+        <div class="col-md-6 col-lg-8">
+            <form name="form-appointment" action="{{ url_for('appointment', step=2) }}" method="POST">
+                <div class="row g-3">
+                    <div class="col-sm-4">
+                        <label for="service_type" class="form-label align-center">Выберите тип сервиса</label>
+                        <select name="service_type" id="service_type" class="form-select" required="" aria-label="select example">
+                            {% for service in static_content.services_list %}
+                            <option value="{{service}}">{{service}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="col-sm-4">
+                        <label for="date_input" class="form-label align-center">Выберите дату</label>
+                        <input type="date" class="form-control" id="date_input" name="date_input" value="">
+                    </div>
+                    <div class="col-sm-4">
+
+                        <label for="button_method" class="form-label align-center"></label>
+                            <button name="button_method"
+                                    id="button_method"
+                                    value="insert"
+                                    class="w-100 btn btn-primary "
+                                    type="submit" >
+                                Далее
+                            </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-3 col-lg-2"></div>
+    </div>
+</div>
+{% endblock main %}

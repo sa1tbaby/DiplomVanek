@@ -1,0 +1,18 @@
+version: '3.1'
+
+volumes:
+  pg_data:
+
+services:
+  pgsql01:
+    image: eb634efa7ee4
+    restart: always
+    environment:
+      - POSTGRES_PASSWORD=pgadmin
+      - POSTGRES_USER=pgadmin
+      - POSTGRES_DB=db01
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+

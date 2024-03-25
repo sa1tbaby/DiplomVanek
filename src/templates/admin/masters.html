@@ -1,0 +1,87 @@
+{% extends "admin/admin_base.html" %}
+
+{% block admin_content %}
+<table>
+    <thead>
+        <tr>
+            <th>Имя</th>
+            <th>Фамилия</th>
+            <th>Email</th>
+            <th>Номер</th>
+        </tr>
+    </thead>
+    <tbody>
+        <form name="form-masters" action="{{ url_for('admin', point='masters', option='update') }}" method="POST">
+            <tr>
+                <th>
+                    <input name="first_name" type="text">
+                </th>
+                <th>
+                    <input name="second_name" type="text">
+                </th>
+                <th>
+                    <input name="email" type="text">
+                </th>
+                <th>
+                    <input name="phone_number" type="text">
+                </th>
+                <th>
+                    <button type="submit">
+                        Добавить
+                    </button>
+                </th>
+
+            </tr>
+        </form>
+    </tbody>
+</table>
+<table>
+    <thead>
+        <tr>
+            <th>Имя</th>
+            <th>Фамилия</th>
+            <th>Email</th>
+            <th>Номер</th>
+            <th></th>
+            <th>Удаление</th>
+            <th>График</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for content in static_content %}
+        <form name="form-masters" action="{{ url_for('admin', point='masters', option='update') }}" method="POST">
+            <tr>
+                <th>
+                    <input name="first_name" type="text" value={{content.first_name}}>
+                </th>
+                <th>
+                    <input name="second_name" type="text" value={{content.second_name}}>
+                </th>
+                <th>
+                    <input name="email" type="text" value={{content.email}}>
+                </th>
+                <th>
+                    <input name="phone_number" type="text" value={{content.phone_number}}>
+                </th>
+                <th>
+                    <button name="id" value={{content.id}} type="submit">
+                        Обновить
+                    </button>
+                </th>
+                <th>
+                    <a name="delete_record" href="{{ url_for('admin', point='masters', option='delete' ) }}" class="button">
+                        Click
+                    </a>
+                </th>
+                <th>
+                    <a name="work_schedule" href="{{ url_for('admin', point='masters', option='schedule', master_id=content.id, schedule=content.work_schedule) }}" class="button" methods="POST">
+                        Click
+                    </a>
+                </th>
+            </tr>
+        </form>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock admin_content %}
+

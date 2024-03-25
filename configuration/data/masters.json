@@ -1,0 +1,67 @@
+{
+"data": [
+        {
+            "first_name": "Татьяна",
+            "second_name": "Гоярд",
+            "email": "tati_master@gmail.ru",
+            "phone_number": "+79992223342",
+            "work_schedule": "110110110110110110110110110110"
+        },
+        {
+            "first_name": "Марина",
+            "second_name": "Формке",
+            "email": "mari_master@gmail.ru",
+            "phone_number": "+79992223343",
+            "work_schedule": "110110110110110110110110110110"
+        },
+        {
+            "first_name": "Анна",
+            "second_name": "Мориан",
+            "email": "anna_master@gmail.ru",
+            "phone_number": "+79992223344",
+            "work_schedule": "011011011011011011011011011011"
+        },
+        {
+            "first_name": "Светлана",
+            "second_name": "Белкова",
+            "email": "sveta_master@gmail.ru",
+            "phone_number": "+79992223345",
+            "work_schedule": "011011011011011011011011011011"
+        },
+        {
+            "first_name": "Дмитрий",
+            "second_name": "Быстраков",
+            "email": "dima_master@gmail.ru",
+            "phone_number": "+79992223346",
+            "work_schedule": "101101101101101101101101101101"
+        },
+        {
+            "first_name": "Алена",
+            "second_name": "Переселова",
+            "email": "anna_master@gmail.ru",
+            "phone_number": "+79992223347",
+            "work_schedule": "101101101101101101101101101101"
+        },
+        {
+            "first_name": "Ефросинья",
+            "second_name": "Папчук",
+            "email": "efro_master@gmail.ru",
+            "phone_number": "+79992223348",
+            "work_schedule": "110110110110110110110110110110"
+        },
+        {
+            "first_name": "Любава",
+            "second_name": "Гибраловна",
+            "email": "luba_master@gmail.ru",
+            "phone_number": "+79992223349",
+            "work_schedule": "101101101101101101101101101101"
+        },
+        {
+            "first_name": "Солярий",
+            "second_name": "Солярий",
+            "email": "None",
+            "phone_number": "0",
+            "work_schedule": "111111111111111111111111111111"
+        }
+    ]
+}

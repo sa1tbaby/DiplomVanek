@@ -1,0 +1,72 @@
+{
+  "data": [
+    {
+      "service_type": "BROWS", "service_name": "Наращивание ресниц", "type_cost": 2300},
+    {
+      "service_type": "BROWS", "service_name": "Наращивание ресниц 2D", "type_cost": 2600},
+    {
+      "service_type": "BROWS", "service_name": "Наращивание ресниц 3D", "type_cost": 2900},
+    {
+      "service_type": "BROWS", "service_name": "Снятие ресниц", "type_cost": 500},
+    {
+      "service_type": "BROWS", "service_name": "Ламинирование ресниц", "type_cost": 2300},
+    {
+      "service_type": "BROWS", "service_name": "Ламинирование бровей", "type_cost": 2000},
+    {
+      "service_type": "BROWS", "service_name": "Архитектура бровей", "type_cost": 1800},
+    {
+      "service_type": "BROWS", "service_name": "Коррекция бровей (без окрашивания)", "type_cost": 700},
+    {
+      "service_type": "COLORING", "service_name": "Окрашивание в 1 тон", "type_cost": 3500},
+    {
+      "service_type": "COLORING", "service_name": "Сложное окрашивание", "type_cost": 5200},
+    {
+      "service_type": "COLORING", "service_name": "Окрашивание прикорневое", "type_cost": 2200},
+    {
+      "service_type": "COLORING", "service_name": "Скрытое окрашивание", "type_cost": 3000},
+    {
+      "service_type": "COLORING", "service_name": "Осветление + тонирование", "type_cost": 5000},
+    {
+      "service_type": "COLORING", "service_name": "Мелирование", "type_cost": 3500},
+    {
+      "service_type": "COLORING", "service_name": "Тонирование", "type_cost": 1700},
+    {
+      "service_type": "COLORING", "service_name": "Химия", "type_cost": 2500},
+    {
+      "service_type": "COLORING", "service_name": "Мужское тонирование седины", "type_cost": 2000},
+    {
+      "service_type": "NAILS", "service_name": "Маникюр без покрытия", "type_cost": 1000},
+    {
+      "service_type": "NAILS", "service_name": "Маникюр дизайнерский", "type_cost": 2000},
+    {
+      "service_type": "NAILS", "service_name": "Маникюр мужской", "type_cost": 1300},
+    {
+      "service_type": "NAILS", "service_name": "Укрепление ногтей", "type_cost": 700},
+    {
+      "service_type": "NAILS", "service_name": "Педикюр", "type_cost": 1700},
+    {
+      "service_type": "HAIRCUT", "service_name": "Стрижка одной насадкой", "type_cost": 700},
+    {
+      "service_type": "HAIRCUT", "service_name": "Стрижка модельная", "type_cost": 1200},
+    {
+      "service_type": "HAIRCUT", "service_name": "Стрижка фэйд", "type_cost": 1000},
+    {
+      "service_type": "HAIRCUT", "service_name": "Стрижка детская (от 6 до 9 лет)", "type_cost": 700},
+    {
+      "service_type": "SOLARIUM", "service_name": "Премиум", "type_cost": 200},
+    {
+      "service_type": "SOLARIUM", "service_name": "Стандарт", "type_cost": 100},
+    {
+      "service_type": "SUGARING", "service_name": "Бикини", "type_cost": 900},
+    {
+      "service_type": "SUGARING", "service_name": "Бёдра", "type_cost": 600},
+    {
+      "service_type": "SUGARING", "service_name": "Ноги", "type_cost": 1500},
+    {
+      "service_type": "SUGARING", "service_name": "Руки", "type_cost": 1000},
+    {
+      "service_type": "SUGARING", "service_name": "Лицо", "type_cost": 700},
+    {
+      "service_type": "SUGARING", "service_name": "Ягодицы", "type_cost": 300}
+  ]
+}
