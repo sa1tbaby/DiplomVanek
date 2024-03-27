@@ -24,6 +24,6 @@ class AlchemyFactory:
 
     def get(self, cls_name):
 
-        cls_ = self.subcls_dict.get(cls_name)
+        _cls = self.subcls_dict.get(cls_name)
 
-        return cls_(self.settings)
+        return _cls(self.settings)
